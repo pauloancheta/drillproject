@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # TODO: Relationships to be added later
-  resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
-  resources :drills
+  resources :drills do
+    resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
+  end
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
