@@ -14,10 +14,14 @@
   height: 150px;
   padding-left: 50px;
   padding-bottom: 0px;
+  padding-top: 0px;
+  position: relative;
+  bottom: -40px;
 }
+
 .navbar-right {
   padding-right: 30px;
-  margin-top: 35px;
+  padding-top: 55px;
 }
 
 .navbar-right a{
@@ -39,9 +43,8 @@ hr {
 }
 
 .navbar-left {
-
-  margin-top: 55px;
   padding-left: 15px;
+  padding-top: 65px;
 }
 
 
