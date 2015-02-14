@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
   
-  resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
+  resources :drills
   resources :tags
-
 end
