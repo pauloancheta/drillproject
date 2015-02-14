@@ -23,6 +23,7 @@ class DrillsController < ApplicationController
   end
 
   def show
+    @solutions = @drill.solutions
   end
 
   def edit
@@ -53,7 +54,7 @@ class DrillsController < ApplicationController
   end
 
   def drill_params
-    params.require(:drill).permit(:title, :body)
+    params.require(:drill).permit(:title, :description)
   end
 
   def get_errors

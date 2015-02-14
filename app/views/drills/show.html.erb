@@ -1,2 +1,5 @@
 <h1><%= @drill.title %></h1>
-<p><%= @drill.body%></p>
+<p><%= @drill.description%></p>
+
+<h2>Drill Solutions</h2>
+<%= link_to "New Drill Solution", new_drill_solution_path(@drill) %>

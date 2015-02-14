@@ -3,28 +3,29 @@ class SolutionsController < ApplicationController
                   only: [ :edit, :update, :destroy]
 
 	def new
+		@drill = Drill.find params[:drill_id]
 		@solution = Solution.new 
 		render :new
 	end
 
 	def create
 		@solution = Solution.new solution_params
+		@solution.drill = Drill.find params[:drill_id]
 
 		if @solution.save
-			#redirect_to @solution.drill, notice: "Solution successfully created!" #add this once the drill model exists
-			render nothing: true
+			redirect_to @solution.drill, notice: "Drill solution successfully created!" 
 		else
 			render :new 
 		end
 	end
 
 	def edit
+		@drill = Drill.find params[:drill_id]
 	end
 
 	def update
 		if @solution.update solution_params
-      		redirect_to @solution.drill, notice: "Question updated successfully!" #add once drill model exists
-      		#render nothing: true
+      		redirect_to @solution.drill, notice: "Drill solution updated successfully!" #add once drill model exists
    	 	else
       		render :edit
     	end
