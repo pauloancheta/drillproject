@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20150214030911) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "solutions", force: :cascade do |t|
+    t.integer  "drill_id"
+    t.integer  "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "content"
+  end
+
+  add_index "solutions", ["admin_id"], name: "index_solutions_on_admin_id", using: :btree
+  add_index "solutions", ["drill_id"], name: "index_solutions_on_drill_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
