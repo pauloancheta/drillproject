@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214023738) do
+ActiveRecord::Schema.define(version: 20150214025120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "drills", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
+  create_table "solutions", force: :cascade do |t|
+    t.integer  "drill_id"
+    t.integer  "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "content"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -28,5 +29,8 @@ ActiveRecord::Schema.define(version: 20150214023738) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "solutions", ["admin_id"], name: "index_solutions_on_admin_id", using: :btree
+  add_index "solutions", ["drill_id"], name: "index_solutions_on_drill_id", using: :btree
 
 end
