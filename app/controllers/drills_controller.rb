@@ -48,10 +48,6 @@ class DrillsController < ApplicationController
 
   private
 
-  def get_drill
-    @drill = Drill.find params[:id]
-  end
-
   def drill_params
     params.require(:drill).permit(:title, :body)
   end

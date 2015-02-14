@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'admins/new'
+
   root 'home#index'
   resources :drills
+  resources :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
