@@ -1,2 +1,3 @@
 <h1><%= @drill.title %></h1>
 <p><%= @drill.body%></p>
+<%= link_to "delete", drill_group_drill_path(@drill_group, @drill), method: :delete %>
