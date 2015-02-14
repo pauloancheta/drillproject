@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
   
   resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
+  resources :tags
 
 end
