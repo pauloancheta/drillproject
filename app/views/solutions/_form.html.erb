@@ -1,0 +1,7 @@
+<%= form_for @solution do |f| %>
+	<p><%= f.radio_button :exact_match, true %>Exact Match
+  	<%= f.radio_button :exact_match, false %>Regex</p>
+
+	<%= f.text_area :content, label: "Solution Description" %><br>
+	<%= f.submit class: 'btn btn-submit' %>
+<% end %>
