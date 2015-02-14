@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   end
   resources :tags
   # TODO: Relationship to be added later
-  resources :tagification
+  resources :tagification, only: [:new, :create, :destroy]
 end
