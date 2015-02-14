@@ -1,0 +1,10 @@
+<h1>Create a new Solution</h1>
+
+<%#= link_to "Create", solutions_path, method: :post %>
+
+<%= form_for @solution do |f| %>
+	<%= f.text_field :content %>
+	<%= f.submit %>
+<% end %>
+
+<%= link_to "Try me", solution_path(11), method: :delete %>
