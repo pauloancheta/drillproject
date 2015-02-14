@@ -41,7 +41,6 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
-    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.3)
@@ -64,6 +63,8 @@ GEM
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.3.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     ffi (1.9.6)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
@@ -165,10 +166,10 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.3)
   byebug
   coffee-rails (~> 4.1.0)
+  faker
   hirb
   interactive_editor
   jbuilder (~> 2.0)
