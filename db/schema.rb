@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214181242) do
+ActiveRecord::Schema.define(version: 20150214214628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "drill_groups", force: :cascade do |t|
     t.string   "name"
@@ -26,7 +35,18 @@ ActiveRecord::Schema.define(version: 20150214181242) do
 
   create_table "drills", force: :cascade do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "drill_group_id"
+    t.integer  "level_id"
+  end
+
+  add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
+  add_index "drills", ["level_id"], name: "index_drills_on_level_id", using: :btree
+
+  create_table "levels", force: :cascade do |t|
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,9 +54,10 @@ ActiveRecord::Schema.define(version: 20150214181242) do
   create_table "solutions", force: :cascade do |t|
     t.integer  "drill_id"
     t.integer  "admin_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.text     "content"
+    t.boolean  "exact_match", default: true
   end
 
   add_index "solutions", ["admin_id"], name: "index_solutions_on_admin_id", using: :btree
@@ -77,6 +98,9 @@ ActiveRecord::Schema.define(version: 20150214181242) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "drills", "drill_groups"
+  add_foreign_key "drills", "levels"
+  add_foreign_key "solutions", "drills"
   add_foreign_key "subscriptions", "drill_groups"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "tagifications", "drill_groups"
