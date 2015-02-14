@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       resources :tagifications, only: [:create, :destroy]
     end
   end
+
+  resources :levels
 end
