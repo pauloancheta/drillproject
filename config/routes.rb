@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # TODO: Relationships to be added later
   resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
   resources :drills
+
+  resources :drill_groups 
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection

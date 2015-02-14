@@ -1,17 +1,17 @@
 class DrillGroupsController < ApplicationController
 
   def index
-    @drill_groups = Drill_group.order(name: :asc)
+    @drill_groups = DrillGroup.order(name: :asc)
   end
 
 
   def new
-    @drill_group = Drill_group.new
+    @drill_group = DrillGroup.new
   end
 
 
   def create
-    @drill_group = Drill_group.new drill_group_params
+    @drill_group = DrillGroup.new drill_group_params
     if @drill_group.save
       redirect_to @drill_group, notice: "Drill Group Created!"
     else
@@ -22,10 +22,12 @@ class DrillGroupsController < ApplicationController
 
 
   def show
+    @drill_group = DrillGroup.find(params[:id])
   end
 
 
   def edit
+    @drill_group = DrillGroup.find(params[:id])
   end
 
 
@@ -35,6 +37,7 @@ class DrillGroupsController < ApplicationController
     else
       flash[:alert] = get_errors
       render :edit
+    end
   end
 
 
@@ -44,6 +47,7 @@ class DrillGroupsController < ApplicationController
     else
       flash[:alert] = get_errors
       redirect_to @drill_group
+    end
   end
 
 
