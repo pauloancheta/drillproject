@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20150214223638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "admins", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "drill_groups", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -28,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150214223638) do
 
   create_table "drills", force: :cascade do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "drill_group_id"

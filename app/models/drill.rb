@@ -1,7 +1,6 @@
 class Drill < ActiveRecord::Base
 
   belongs_to :drill_group
-  belongs_to :level
   # belongs_to :admin
 
   # Every :drill can have many :solutions, which 
@@ -10,6 +9,6 @@ class Drill < ActiveRecord::Base
 
   # Make sure the title isn't empty
   validates :title, presence: true
-  # Make sure the body isn't empty
-  validates :body, presence: true
+  # Make sure the description isn't empty
+  validates :description, presence: true
 end
