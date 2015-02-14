@@ -1,19 +1,13 @@
 class TagificationsController < ApplicationController
 
-  def new
-    @tagification = Tagification.new
-  end
-
   def create
     @tagification = Tagification.new
     @tagification.tag = params[:tag_id]
     @tagification.drill_group = params[:drill_group_id]
-    if @tagification.save
-      redirect_to @tagification.drill_group
-    else
+    unless @tagification.save
       flash[:alert] = get_errors
-      render :new
     end
+    redirect_to @tagification.drill_group
   end
 
   def destroy

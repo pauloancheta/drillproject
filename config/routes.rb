@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root 'home#index'
 
+  # TODO: Relationships to be added later
   resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
   resources :drills
   resources :users, only: [:new, :create]
@@ -9,6 +10,10 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
   resources :tags
-  # TODO: Relationship to be added later
-  resources :tagification, only: [:new, :create, :destroy]
+  
+  resources :drill_groups, only: [] do
+    resources :tags, only: [] do
+      resources :tagifications, only: [:create, :destroy]
+    end
+  end
 end
