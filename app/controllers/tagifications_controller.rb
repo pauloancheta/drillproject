@@ -1,0 +1,2 @@
+class TagificationsController < ApplicationController
+end
