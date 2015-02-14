@@ -15,7 +15,7 @@ class DrillsController < ApplicationController
   def create
     @drill = Drill.new drill_params
     if @drill.save
-      redirect_to @drill
+      redirect_to @drill, notice: "Drill successfully created!"
     else
       flash[:alert] = get_errors
       render :new
@@ -23,6 +23,7 @@ class DrillsController < ApplicationController
   end
 
   def show
+    @solutions = @drill.solutions
   end
 
   def edit
@@ -30,7 +31,7 @@ class DrillsController < ApplicationController
 
   def update
     if @drill.update drill_params
-      redirect_to @drill
+      redirect_to @drill, notice: "Drill successfully updated!"
     else
       flash[:alert] = get_errors
       render :edit
@@ -39,7 +40,7 @@ class DrillsController < ApplicationController
 
   def destroy
     if @drill.destroy
-      redirect_to drills_path
+      redirect_to drills_path, notice: "Drill successfully deleted!"
     else
       flash[:alert] = get_errors
       redirect_to @drill
@@ -53,7 +54,7 @@ class DrillsController < ApplicationController
   end
 
   def drill_params
-    params.require(:drill).permit(:title, :body)
+    params.require(:drill).permit(:title, :description)
   end
 
   def get_errors
