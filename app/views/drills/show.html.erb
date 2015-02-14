@@ -1,5 +1,12 @@
 <h1><%= @drill.title %></h1>
 <p><%= @drill.description%></p>
 
-<h2>Drill Solutions</h2>
-<%= link_to "New Drill Solution", new_drill_solution_path(@drill) %>
+<%= link_to "Edit Drill",  edit_drill_path(@drill), class: 'btn btn-primary' %>
+
+<h3>Drill Solutions</h3>
+<% @solutions.each do |solution| %>
+	<%= solution.content %><br>
+<% end %>
+
+
+<%= link_to "Add Drill Solution", new_drill_solution_path(@drill), class: 'btn btn-primary' %>
