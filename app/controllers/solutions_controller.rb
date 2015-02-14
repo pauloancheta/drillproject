@@ -9,9 +9,10 @@ class SolutionsController < ApplicationController
 	end
 
 	def create
+		@drill = Drill.find params[:drill_id]
 		@solution = Solution.new solution_params
-		@solution.drill = Drill.find params[:drill_id]
-
+		@solution.drill = @drill
+		
 		if @solution.save
 			redirect_to @solution.drill, notice: "Drill solution successfully created!" 
 		else
