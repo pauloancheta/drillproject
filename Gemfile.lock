@@ -166,11 +166,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-<<<<<<< HEAD
-  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.3)
-=======
->>>>>>> 99fc5c91c2bb7a6f08c56527de1c0f9feb86b9eb
   byebug
   coffee-rails (~> 4.1.0)
   faker
