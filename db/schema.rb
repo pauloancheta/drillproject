@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20150214181242) do
   add_index "subscriptions", ["drill_group_id"], name: "index_subscriptions_on_drill_group_id", using: :btree
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
+  create_table "tagifications", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "drill_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "tagifications", ["drill_group_id"], name: "index_tagifications_on_drill_group_id", using: :btree
+  add_index "tagifications", ["tag_id"], name: "index_tagifications_on_tag_id", using: :btree
+
   create_table "tags", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -69,4 +79,6 @@ ActiveRecord::Schema.define(version: 20150214181242) do
 
   add_foreign_key "subscriptions", "drill_groups"
   add_foreign_key "subscriptions", "users"
+  add_foreign_key "tagifications", "drill_groups"
+  add_foreign_key "tagifications", "tags"
 end

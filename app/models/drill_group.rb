@@ -5,6 +5,8 @@ class DrillGroup < ActiveRecord::Base
   has_many :scorecards, dependent: :destroy
   has_many :users, through: :scorecards
 
+  # Every :tag can have many :tagifications, which 
+  # are destroyed when the :tag is destroyed
   has_many :tagifications, dependent: :destroy
   has_many :tags, through: :tagifications
 
