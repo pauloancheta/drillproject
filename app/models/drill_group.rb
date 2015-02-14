@@ -1,5 +1,5 @@
 class DrillGroup < ActiveRecord::Base
-  belongs_to :admin
+  belongs_to :user
 
   # Every :drill_group can have many :drills
   has_many :drills, dependent: :destroy
