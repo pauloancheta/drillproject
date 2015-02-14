@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214184315) do
+ActiveRecord::Schema.define(version: 20150214192839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,17 @@ ActiveRecord::Schema.define(version: 20150214184315) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "drill_group_id"
+    t.integer  "level_id"
   end
 
   add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
+  add_index "drills", ["level_id"], name: "index_drills_on_level_id", using: :btree
+
+  create_table "levels", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "solutions", force: :cascade do |t|
     t.integer  "drill_id"
@@ -81,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150214184315) do
   end
 
   add_foreign_key "drills", "drill_groups"
+  add_foreign_key "drills", "levels"
   add_foreign_key "solutions", "drills"
   add_foreign_key "subscriptions", "drill_groups"
   add_foreign_key "subscriptions", "users"

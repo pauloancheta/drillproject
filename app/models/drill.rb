@@ -1,5 +1,6 @@
 class Drill < ActiveRecord::Base
   belongs_to :drill_group
+  belongs_to :level
   # belongs_to :admin
 
   # Every :drill can have many :solutions, which 
