@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150214185223) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,9 +48,21 @@ ActiveRecord::Schema.define(version: 20150214185223) do
     t.integer  "drill_group_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
   end
 
   add_index "subscriptions", ["drill_group_id"], name: "index_subscriptions_on_drill_group_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+
+  create_table "tagifications", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "drill_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "tagifications", ["drill_group_id"], name: "index_tagifications_on_drill_group_id", using: :btree
+  add_index "tagifications", ["tag_id"], name: "index_tagifications_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "title"
@@ -67,4 +80,7 @@ ActiveRecord::Schema.define(version: 20150214185223) do
   end
 
   add_foreign_key "subscriptions", "drill_groups"
+  add_foreign_key "subscriptions", "users"
+  add_foreign_key "tagifications", "drill_groups"
+  add_foreign_key "tagifications", "tags"
 end

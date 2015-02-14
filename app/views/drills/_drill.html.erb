@@ -1,7 +1,5 @@
-<%= form_for @drill do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
-  <%= f.label :body %>
-  <%= f.text_field :body %><br>
-  <%= f.submit %>
+<%= simple_form_for @drill, class: "form-horizontal" do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.button :submit %>
 <% end %>
