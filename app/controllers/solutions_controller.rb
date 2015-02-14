@@ -23,8 +23,8 @@ class SolutionsController < ApplicationController
 
 	def update
 		if @solution.update solution_params
-      		#redirect_to @solution.drill, notice: "Question updated successfully!" #add once drill model exists
-      		render nothing: true
+      		redirect_to @solution.drill, notice: "Question updated successfully!" #add once drill model exists
+      		#render nothing: true
    	 	else
       		render :edit
     	end
@@ -39,7 +39,7 @@ class SolutionsController < ApplicationController
 private
 	
 	def solution_params
-		params.require(:solution).permit()
+		params.require(:solution).permit(:content, :exact_match)
 	end
 
 	 def find_solution

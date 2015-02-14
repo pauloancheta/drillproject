@@ -1,6 +1,4 @@
 <h1>Edit Solution</h1>
 
-<%= form_for @solution do |f| %>
-	<%= f.text_field :content %>
-	<%= f.submit %>
-<% end %>
+<%= render 'form' %>
+<%= link_to 'delete', solution_path(@solution), method: :delete %>
