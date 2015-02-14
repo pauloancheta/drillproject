@@ -7,8 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <%= link_to "Home", root_path %>
+  | 
+  <% if user_signed_in? %>
+    Welcome <%= current_user.first_name %>
+    <%= link_to "Sign Out", sessions_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign In", new_session_path %>
+    or
+    <%= link_to "Sign Up", new_user_path %>
+  <% end %>
+</nav>
+<hr>
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
 
-<%= yield %>
+<div class="container">
+  <%= yield %>  
+</div>
 
 </body>
 </html>
