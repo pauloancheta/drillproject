@@ -1,4 +1,5 @@
 class SolutionsController < ApplicationController
+  before_action :get_drill
   	before_action :find_solution, 
                   only: [ :edit, :update, :destroy]
 
@@ -9,10 +10,9 @@ class SolutionsController < ApplicationController
 
 	def create
 		@solution = Solution.new solution_params
-
+    @solution.drill = @drill
 		if @solution.save
-			#redirect_to @solution.drill, notice: "Solution successfully created!" #add this once the drill model exists
-			render nothing: true
+			redirect_to [@drill.drill_group, @drill], notice: "Solution successfully created!" #add this once the drill model exists
 		else
 			render :new 
 		end
@@ -23,8 +23,7 @@ class SolutionsController < ApplicationController
 
 	def update
 		if @solution.update solution_params
-      		redirect_to @solution.drill, notice: "Question updated successfully!" #add once drill model exists
-      		#render nothing: true
+      		redirect_to [@drill.drill_group, @drill], notice: "Question updated successfully!" #add once drill model exists
    	 	else
       		render :edit
     	end
@@ -32,12 +31,15 @@ class SolutionsController < ApplicationController
 
 	def destroy
 		@solution.destroy
-    	#redirect_to @solution.drill, notice: "Question deleted successfully!" #add this once drill model exists
-    	render nothing: true
+    redirect_to [@drill.drill_group, @drill], notice: "Question deleted successfully!" #add this once drill model exists
 	end
 
 private
 	
+def get_drill
+  @drill = Drill.find params[:drill_id]
+end
+
 	def solution_params
 		params.require(:solution).permit(:content, :exact_match)
 	end
