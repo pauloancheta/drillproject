@@ -12,6 +12,7 @@ class DrillGroupsController < ApplicationController
 
   def create
     @drill_group = DrillGroup.new drill_group_params
+    # @drill_group.user = current_user
     if @drill_group.save
       redirect_to @drill_group, notice: "Drill Group Created!"
     else
@@ -55,7 +56,7 @@ class DrillGroupsController < ApplicationController
   private
 
   def drill_group_params
-    params.require(:drill_group).permit(:name, :description, :difficulty, :admin_id)
+    params.require(:drill_group).permit(:name, :description, :level_id)
   end
 
   def get_errors
