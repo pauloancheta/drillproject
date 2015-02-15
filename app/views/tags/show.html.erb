@@ -1,4 +1,9 @@
-<h1><%= @tag.title %></h1>
+<%# TODO: tag show %>
+<h1>Tag: <%= @tag.title %></h1>
+<p>Drills:</p>
+<% @tag.drill_groups.each do |drill| %>
+  <p><%= drill.name %></p>
+<% end %>
 <%= link_to 'edit', edit_tag_path(@tag) %>
  | 
 <%= link_to 'delete', tag_path(@tag), method: :delete %>
