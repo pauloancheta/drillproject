@@ -1,4 +1,5 @@
 class DrillGroup < ActiveRecord::Base
+
   
   belongs_to :level
   belongs_to :user

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
   root 'home#index'
+  get "/about" => "home#about"
 
   # TODO: Relationships to be added later
+
+  resources :users, only: [:new, :create, :index, :update, :destroy] 
   resources :drill_groups 
-  resources :users, only: [:new, :create]
+
   resources :tags
   resources :levels
 
