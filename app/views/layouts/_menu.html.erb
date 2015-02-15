@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
   <div class="navbar-header">
-    <%= link_to image_tag("drill_logo.png", :class => 'navbar-brand'), root_path %>
+    <%= link_to image_tag("codecore_drill.png", :class => 'navbar-brand'), root_path %>
   </div>
 
   <% if user_signed_in? %>
@@ -11,7 +11,7 @@
     <%= link_to "My Drills", root_path %>
   </div>  
     <div class="navbar-right">
-    <p class="navbar-text">Welcome <%= current_user.first_name %></p>
+    <p class="navbar-text">Welcome, <%= current_user.first_name %></p>
       <span class="btn btn-default navbar-btn"><%= link_to "Sign Out", sessions_path, method: :delete%></span>
     </div>
     <% elsif user_signed_in? && user.is_admin %>
@@ -31,9 +31,9 @@
     </div>
   <% end %>
   <div class="navbar-left">
-    <%= link_to "about", root_path %>
-    <%= link_to "contact", root_path %>
-  </div>
+    <%= link_to "About", root_path %>
+    <%= link_to "Contact", root_path %>
+    </div>
   </div>
 </nav>
 <hr id="navline">
