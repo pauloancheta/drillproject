@@ -1,24 +1,27 @@
 .navbar{
   margin: 0px;
+  background: white;
+  border-radius: 0px;
+  height: 125px;
+  border: 1px #FE642E;
 }
 .navbar a{
-  font-size: 2em;
+  font-size: 18px;
   color: #474747;
 }
 
 
 .navbar-brand {
-  height: 150px;
+  height: 100px;
   padding-left: 50px;
   padding-bottom: 0px;
-  padding-top: 0px;
+  padding-top: 10px;
   position: relative;
-  bottom: -40px;
 }
 
 .navbar-right {
   padding-right: 30px;
-  padding-top: 55px;
+  padding-top: 40px;
 }
 
 .navbar-right a{
@@ -31,7 +34,7 @@
   color: #fff;
 }
 .btn-default:hover {
-  background-color: #e56262;
+  background-color: #675d80;
 }
 
 hr {
@@ -41,13 +44,14 @@ hr {
 
 .navbar-left {
   padding-left: 15px;
-  padding-top: 65px;
+  padding-top: 40px;
 }
 
 
 .navbar-left a{
   border: none;
-  color: #474747;
+  color: #675d80;
+  letter-spacing: 3px;
   margin-left: 15px;
 }
 
