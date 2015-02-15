@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215005338) do
+ActiveRecord::Schema.define(version: 20150215040230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20150215005338) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "level_id"
+    t.integer  "user_id"
   end
 
   add_index "drill_groups", ["level_id"], name: "index_drill_groups_on_level_id", using: :btree
+  add_index "drill_groups", ["user_id"], name: "index_drill_groups_on_user_id", using: :btree
 
   create_table "drills", force: :cascade do |t|
     t.string   "title"
@@ -99,17 +101,11 @@ ActiveRecord::Schema.define(version: 20150215005338) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "drill_id"
-    t.integer  "solution_id"
-    t.integer  "drill_group_id"
     t.boolean  "is_admin"
   end
 
-  add_index "users", ["drill_group_id"], name: "index_users_on_drill_group_id", using: :btree
-  add_index "users", ["drill_id"], name: "index_users_on_drill_id", using: :btree
-  add_index "users", ["solution_id"], name: "index_users_on_solution_id", using: :btree
-
   add_foreign_key "drill_groups", "levels"
+  add_foreign_key "drill_groups", "users"
   add_foreign_key "drills", "drill_groups"
   add_foreign_key "scorecards", "drill_groups"
   add_foreign_key "scorecards", "users"
@@ -118,7 +114,4 @@ ActiveRecord::Schema.define(version: 20150215005338) do
   add_foreign_key "subscriptions", "users"
   add_foreign_key "tagifications", "drill_groups"
   add_foreign_key "tagifications", "tags"
-  add_foreign_key "users", "drill_groups"
-  add_foreign_key "users", "drills"
-  add_foreign_key "users", "solutions"
 end

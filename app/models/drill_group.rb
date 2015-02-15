@@ -15,6 +15,7 @@ class DrillGroup < ActiveRecord::Base
   has_many :tags, through: :tagifications
 
   has_many :subscriptions, dependent: :destroy
+  has_many :user_subscriptions, through: :subscriptions, source: :user
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true

@@ -8,9 +8,9 @@
       <p> <%= u.full_name %> </p>
       <%= link_to "Destroy user", user_path(u), method: :delete, style: "color: red" %>
       <% if u.is_admin? %>
-        <%= button_to "Undo Admin", user_path(u,  {user: {is_admin: false}}), method: :patch, class: "btn btn-warning" %>
+        <%= button_to "Undo Admin", toggle_path(u.id), method: :patch, class: "btn btn-warning" %>
       <% else %>
-        <%= button_to "Make Admin", user_path(u,  {user: {is_admin: true}}), method: :patch, class: "btn btn-warning" %>
+        <%= button_to "Make Admin", toggle_path(u.id), method: :patch, class: "btn btn-warning" %>
   
       <% end %>
       </div>

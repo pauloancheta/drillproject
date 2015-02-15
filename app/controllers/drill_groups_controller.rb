@@ -12,7 +12,7 @@ class DrillGroupsController < ApplicationController
 
   def create
     @drill_group = DrillGroup.new drill_group_params
-    # @drill_group.user = current_user
+    @drill_group.user_id = current_user.id
     if @drill_group.save
       redirect_to @drill_group, notice: "Drill Group Created!"
     else
@@ -24,6 +24,7 @@ class DrillGroupsController < ApplicationController
 
   def show
     @drill_group = DrillGroup.find(params[:id])
+    @current_user = User.last
   end
 
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :user_id, only: [:update, :destroy, :toggle]
   def new
     @user = User.new
   end
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
   end
  
   def update
-    @user = User.find(params[:id]) 
       if @user.update(user_params)
         redirect_to users_path, notice: "Updated user!"  
       else   
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id]) 
       if current_user.is_admin? &&  @user.destroy
         redirect_to users_path, notice: "User deleted" 
       else
@@ -39,11 +38,25 @@ class UsersController < ApplicationController
       end
   end
 
+  def toggle
+    if @user.is_admin
+      @user.is_admin = false
+    else
+      @user.is_admin = true
+    end
+    @user.save
+    redirect_to users_path
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name,
                                  :email, :password,
                                  :password_confirmation, :is_admin)
+  end
+
+  def user_id
+    @user = User.find(params[:id]) 
   end
 end

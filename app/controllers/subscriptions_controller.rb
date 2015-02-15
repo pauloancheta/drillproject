@@ -3,6 +3,7 @@ class SubscriptionsController < ApplicationController
   def create
     drill_group = DrillGroup.find params[:drill_group_id]
     subscription = drill_group.subscriptions.new
+    subscription.user = User.last
     if subscription.save
       redirect_to drill_group, notice: "Subscribed!"
     else
