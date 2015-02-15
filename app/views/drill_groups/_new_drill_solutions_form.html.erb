@@ -1,0 +1,6 @@
+<%# TODO Replace Drill.find(1) with @drill %>
+<%= simple_form_for [Drill.find(1), Drill.find(1).solutions.new], class: "form-horizontal" do |f| %>
+  <%= f.input :exact_match, as: :radio_buttons, collection: [[true, 'Exact Match'], [false, 'Regex']], label_method: :last, value_method: :first, label: '' %>
+  <%= f.input :content, label: "Solution Description" %>
+  <%= f.submit "Save and (optionally) Add Another Solution", class: "btn btn-default" %>
+<% end %>
