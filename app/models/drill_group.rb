@@ -1,9 +1,7 @@
 class DrillGroup < ActiveRecord::Base
 
-  belongs_to :admin
   belongs_to :level
   belongs_to :user
-  belongs_to :level
 
   # Every :drill_group can have many :drills
   has_many :drills, dependent: :destroy
