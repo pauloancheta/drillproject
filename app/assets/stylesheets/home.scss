@@ -2,12 +2,19 @@ body {
   background: #585858;
 }
 
+.button {
+  transition: .3s;
+}
+
+.spacer {
+  height: 75px;
+}
+
 .home-poster {
   width: 360px;
 }
 
 .home-button {
-  left: 15px;
   position: relative;
   bottom: 150px;
   width: 160px;
