@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # user has many subscriptions and their subscriptions are deleted
   # from the database if the user deletes their account
   has_many :subscriptions, dependent: :destroy
+  has_many :drill_group_subscriptions, through: :subscriptions, source: :drill_group
 
   # :user has many :drills and upon deletion, :drills reference
   # to :user is nullified
@@ -27,4 +28,7 @@ class User < ActiveRecord::Base
       email
     end
   end
+
+
+
 end

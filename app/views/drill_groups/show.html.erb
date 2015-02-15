@@ -1,0 +1,9 @@
+<h1><%= @drill_group.name %></h1>
+<p><%= @drill_group.description %></p>
+<p><%= Level.find(@drill_group.level_id).title %></p>
+
+<% if @current_user.drill_group_subscriptions.include? @drill_group %>
+<p><%= link_to "Unsubscribe", drill_group_subscription_path(@drill_group, Subscription.where(drill_group_id: @drill_group.id).where(user_id: @current_user.id).last), method: :delete, class: "btn btn-danger" %></p>
+<% else %>
+<p><%= link_to "Subscribe", drill_group_subscriptions_path(@drill_group), class: "btn btn-info", method: :post %></p>
+<% end %>

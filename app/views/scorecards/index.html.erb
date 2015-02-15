@@ -4,4 +4,8 @@
 <p>Drill Group: <%= scorecard.drill_group.name %></p>
 <p>Taken: <%= scorecard.total_drills %> times</p>
 <p>Score: <%= number_to_percentage(scorecard.correct_drills.to_f/scorecard.total_drills.to_f) %></p>
+<%= link_to "Start", drill_group_drill_path(@drill_group), class: 'btn-btn-xs btn-success' %>
+<%= link_to "Remove", drill_group_scorecard_path(@drill_group,scorecard), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger' %>
 <% end %>
+
+<%# we need to add randomize and start now button still %>
