@@ -5,9 +5,9 @@ class SubscriptionsController < ApplicationController
     @subscription = @drill_group.subscriptions.new
     @subscription.user = current_user
     if @subscription.save
-      redirect_to @drill_group
+      redirect_to my_drills_path
     else
-      redirect_to @drill_group, alert: get_errors
+      redirect_to all_drills_path, alert: get_errors
     end
   end
 
@@ -15,9 +15,9 @@ class SubscriptionsController < ApplicationController
     @drill_group = DrillGroup.find params[:drill_group_id]
     @subscription = @drill_group.subscriptions.find params[:id]
     if @subscription.destroy
-      redirect_to @drill_group
+      redirect_to all_drills_path
     else
-      redirect_to @drill_group, alert: get_errors
+      redirect_to my_drills_path, alert: get_errors
     end
         
   end
