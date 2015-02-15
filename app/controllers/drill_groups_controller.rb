@@ -33,6 +33,7 @@ class DrillGroupsController < ApplicationController
 
 
   def update
+    @drill_group = DrillGroup.find(params[:id])
     if @drill_group.update drill_group_params
       redirect_to @drill_group, notice: "Drill Group Updated!"
     else
@@ -43,6 +44,7 @@ class DrillGroupsController < ApplicationController
 
 
   def destroy
+    @drill_group = DrillGroup.find(params[:id])
     if @drill_group.destroy
       redirect_to drill_groups_path 
     else
