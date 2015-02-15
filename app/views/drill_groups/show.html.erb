@@ -1,12 +1,23 @@
-<h1><%= @drill_group.name %></h1>
+<h1>Drill Group: <%= @drill_group.name %></h1>
 <p><%= @drill_group.description %></p>
-<p><%= Level.find(@drill_group.level_id).title %></p>
 
-<% if @current_user.drill_group_subscriptions.include? @drill_group %>
-<p><%= link_to "Unsubscribe", drill_group_subscription_path(@drill_group, Subscription.where(drill_group_id: @drill_group.id).where(user_id: @current_user.id).last), method: :delete, class: "btn btn-danger" %></p>
-<% else %>
-<p><%= link_to "Subscribe", drill_group_subscriptions_path(@drill_group), class: "btn btn-info", method: :post %></p>
+<% @drill_group.drills.each do |drill| %>
+  <%= render partial: "/drill_groups/drill_list_item", locals: { drill: drill } %>
 <% end %>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add New Drill</h3>
+  </div>
+  <div class="panel-body">
+    <div id="new_drill_form">
+      <%= render partial: "/drill_groups/new_drill_form" %>
+    </div>
 
-<%= link_to "add drill", new_drill_group_drill_path(@drill_group.id) %>
+    <div id="drill_solutions">
+      <div id="new_drill_solutions_form">
+        <%= render partial: "/drill_groups/new_drill_solutions_form" %>
+      </div>
+    </div>
+  </div>
+</div>
