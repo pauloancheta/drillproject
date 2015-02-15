@@ -1,0 +1,24 @@
+<% if user_signed_in? && current_user.is_admin? %>
+  <h1>All Users</h1>
+
+  <% @users.each do |u| %>
+    <% if u != current_user%>
+      <div class="well">
+      <h2><%=  u.email %></h2>
+      <p> <%= u.full_name %> </p>
+      <%= link_to "Destroy user", user_path(u), method: :delete, style: "color: red" %>
+      <% if u.is_admin? %>
+        <%= button_to "Undo Admin", user_path(u,  {user: {is_admin: false}}), method: :patch, class: "btn btn-warning" %>
+      <% else %>
+        <%= button_to "Make Admin", user_path(u,  {user: {is_admin: true}}), method: :patch, class: "btn btn-warning" %>
+  
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+<% elsif user_signed_in? %>
+
+  <h1> Sorry, you must be an admin user to access this page </h1> 
+
+<% end %>
