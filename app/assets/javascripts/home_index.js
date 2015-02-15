@@ -21,7 +21,7 @@ $('.navbutton').hover(function () {
 
 // NAVLINK
 $('.navlink').hover(function () {
-  $(this).css('color', '#40daf4');
+  $(this).css('color', '#e56262');
 },function () {
   $(this).css('color', 'white');
 });
