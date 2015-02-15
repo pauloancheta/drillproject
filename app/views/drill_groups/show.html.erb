@@ -7,3 +7,6 @@
 <% else %>
 <p><%= link_to "Subscribe", drill_group_subscriptions_path(@drill_group), class: "btn btn-info", method: :post %></p>
 <% end %>
+
+
+<%= link_to "add drill", new_drill_group_drill_path(@drill_group.id) %>
