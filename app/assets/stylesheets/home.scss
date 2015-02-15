@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.white-text {
+  color: white;
+}
+
+.orange-text {
+  color: #FE642E;
+}
+
+.medium-text {
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: lighter;
+}
+
+.large-text {
+  font-size: 36px;
+  letter-spacing: 2px;
+  font-weight: lighter;
+}
+
 .button {
   transition: .3s;
 }
@@ -16,6 +36,17 @@
 
 .home-button {
   position: relative;
+  left: 10px;
   bottom: 150px;
   width: 160px;
+}
+
+.jumbotron {
+  background: url("link_images/homesplash.png");
+  margin-top: -25px;
+  height: 550px;
+}
+
+.homesplash {
+  margin-left: 50px;
 }

@@ -1,0 +1,8 @@
+<% if current_user.is_admin %>
+  <p>Title: <% @drill_group.name %></p>
+  <p>Drill Count: <% @drill_group.drill.length %></p>
+  <p>Description: <% @drill_group.description %></p>
+  <p>Level: <% @drill_group.level %></p>
+<% end %>
+
+  

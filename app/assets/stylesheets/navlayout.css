@@ -1,0 +1,37 @@
+.navheader {
+  width: 100%;
+  height: 135px;
+  background: white;
+}
+
+.navlogo {
+  padding-top: 10px;
+  height: 100px;
+}
+
+.navbutton {
+  font-size: 18px;
+  padding-top: 40px;
+  height: 110px;
+  transition: .3s;
+}
+
+.navlink {
+  color: #4d496c;
+  transition: .3s;
+}
+
+.bluebar {
+  height: 40px;
+  width: 100%;
+  color: #4d496c;
+  background: white;
+  margin-top: -25px;
+  padding-top: 5px;
+}
+
+.line {
+  height: 2px;
+  width: 100%;
+  background: black;
+}
