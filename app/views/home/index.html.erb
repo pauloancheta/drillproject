@@ -1,3 +1,10 @@
+<% if user_signed_in? %>
+  <% if current_user.is_admin %>
+    <!-- it excludes the current user -->
+    <h3><%= link_to "Users", users_path %></h3>
+    <h3><%= link_to "Drill Groups", drill_groups_path %></h3>
+  <% end %>
+<% end %>
 <div class="col-md-12 spacer"></div>
 
 <div class="col-md-12">
@@ -33,16 +40,3 @@
   </div>
 
 </div>
-
-<% if user_signed_in? %>
-<h1> this will be the home page </h1>
-
-
-  <% if current_user.is_admin %>
-    <!-- it excludes the current user -->
-    <%= link_to "Users", users_path %>
-    <br>
-    <%= link_to "Drill Groups", new_drill_group_path %>
-  <% end %>
-<% end %>
-
