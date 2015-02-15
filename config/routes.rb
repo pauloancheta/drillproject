@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/all_drills" => "home#all_drills"
   # TODO: Relationships to be added later
 
-  resources :users, only: [:new, :create, :index, :update, :destroy] 
+  resources :users 
   resources :drill_groups 
 
   resources :tags

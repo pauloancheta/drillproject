@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_id, only: [:update, :destroy, :toggle]
+  before_action :user_id, only: [:edit, :show, :update, :destroy, :toggle]
   def new
     @user = User.new
   end
@@ -19,14 +19,20 @@ class UsersController < ApplicationController
     authenticate_user!
     @users = User.all
   end
- 
-  def update
+
+  def edit
+  end
+
+   def update
       if @user.update(user_params)
         redirect_to users_path, notice: "Updated user!"  
       else   
         flash[:alert] = "Sorry, your user update request failed"
         render :index    
       end
+  end
+
+  def show
   end
 
   def destroy
