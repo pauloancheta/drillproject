@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   root 'home#index'
+  get "/about" => "home#about"
 
   # TODO: Relationships to be added later
   resources :drill_groups 
