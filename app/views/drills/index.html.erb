@@ -2,9 +2,9 @@
 
 <div class="container">
   <% @drills.each do |f| %>
-    <p><%= link_to f.title, drill_path(f) %><p>
+    <p><%= link_to f.title, drill_group_drill_pathx(f.drill_group, f) %><p>
     <p>Title:<%= f.title %></p>
-    <p>Body:<%= f.body %></p>
+    <p>Description:<%= f.description %></p>
     <hr>
   <% end %>
 </div>   

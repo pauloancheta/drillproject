@@ -1,0 +1,8 @@
+<%= simple_form_for @drill_group, class: "form-horizontal" do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%= f.association :level, as: :radio_buttons, label_method: :title %>
+  
+  <%= f.button :submit %>
+<% end %>
+

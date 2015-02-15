@@ -1,5 +1,8 @@
 class DrillGroup < ActiveRecord::Base
+
   belongs_to :admin
+  belongs_to :level
+  belongs_to :user
 
   # Every :drill_group can have many :drills
   has_many :drills, dependent: :destroy
@@ -16,7 +19,7 @@ class DrillGroup < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
-  validates :difficulty, presence: true
+  # validates :level, presence: true
 
 
 end
