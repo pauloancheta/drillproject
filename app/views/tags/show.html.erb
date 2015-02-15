@@ -2,3 +2,7 @@
 <% @tag.drill_groups.each do |drill_group| %>
   <%= render partial: "/home/all_drills_box", locals: { drill_group: drill_group } %>
 <% end %>
+
+<%# TODO Display for admins here? Or elsewhere? %>
+<%#= link_to 'edit', edit_tag_path(@tag) %>
+<%#= link_to 'delete', tag_path(@tag), method: :delete %>
