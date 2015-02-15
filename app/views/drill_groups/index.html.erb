@@ -1,0 +1,11 @@
+<h1>Drill Groups</h1>
+
+<div class="container">
+  <% @drill_groups.each do |f| %>
+    <p><%= link_to f.name, drill_group_path(f) %><p>
+    <p>Description: <%= f.description %></p>
+    <p><%= link_to "Edit", edit_drill_group_path(f) %></p>
+    <p><%= link_to "Delete", drill_group_path(f), method: :delete, data: {confirm: "Are you sure?"} %></p>
+    <hr>
+  <% end %>
+</div>   

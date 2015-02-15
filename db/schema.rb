@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150215005338) do
   create_table "drill_groups", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "difficulty"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "level_id"
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150215005338) do
     t.integer  "drill_id"
     t.integer  "solution_id"
     t.integer  "drill_group_id"
+    t.boolean  "is_admin"
   end
 
   add_index "users", ["drill_group_id"], name: "index_users_on_drill_group_id", using: :btree

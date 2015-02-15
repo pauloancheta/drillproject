@@ -1,4 +1,7 @@
 class DrillGroup < ActiveRecord::Base
+
+  belongs_to :admin
+  belongs_to :level
   belongs_to :user
   belongs_to :level
 
@@ -17,7 +20,7 @@ class DrillGroup < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
-  validates :difficulty, presence: true
+  # validates :level, presence: true
 
 
 end
