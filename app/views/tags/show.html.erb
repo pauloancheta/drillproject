@@ -1,5 +1,4 @@
 <h1><%= @tag.title %></h1>
-<%= link_to 'edit', edit_tag_path(@tag) %>
- | 
-<%= link_to 'delete', tag_path(@tag), method: :delete %>
-
+<% @tag.drill_groups.each do |drill_group| %>
+  <%= render partial: "/home/all_drills_box", locals: { drill_group: drill_group } %>
+<% end %>
