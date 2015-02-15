@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214223638) do
+ActiveRecord::Schema.define(version: 20150215002553) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +53,18 @@ ActiveRecord::Schema.define(version: 20150214223638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "scorecards", force: :cascade do |t|
+    t.integer  "total_drills"
+    t.integer  "correct_drills"
+    t.integer  "user_id"
+    t.integer  "drill_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "scorecards", ["drill_group_id"], name: "index_scorecards_on_drill_group_id", using: :btree
+  add_index "scorecards", ["user_id"], name: "index_scorecards_on_user_id", using: :btree
 
   create_table "solutions", force: :cascade do |t|
     t.integer  "drill_id"
@@ -110,6 +123,8 @@ ActiveRecord::Schema.define(version: 20150214223638) do
   add_foreign_key "drill_groups", "levels"
   add_foreign_key "drills", "drill_groups"
   add_foreign_key "drills", "levels"
+  add_foreign_key "scorecards", "drill_groups"
+  add_foreign_key "scorecards", "users"
   add_foreign_key "solutions", "drills"
   add_foreign_key "subscriptions", "drill_groups"
   add_foreign_key "subscriptions", "users"
