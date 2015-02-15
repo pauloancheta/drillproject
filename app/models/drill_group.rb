@@ -1,9 +1,7 @@
 class DrillGroup < ActiveRecord::Base
 
-  belongs_to :admin
   belongs_to :level
   belongs_to :user
-  belongs_to :level
 
   # Every :drill_group can have many :drills
   has_many :drills, dependent: :destroy
@@ -17,6 +15,7 @@ class DrillGroup < ActiveRecord::Base
   has_many :tags, through: :tagifications
 
   has_many :subscriptions, dependent: :destroy
+  has_many :user_subscriptions, through: :subscriptions, source: :user
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true

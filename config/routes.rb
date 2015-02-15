@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   
   root 'home#index'
   get "/about" => "home#about"
-
+  patch "/toggle/:id" => "users#toggle", as: :toggle
   # TODO: Relationships to be added later
+
   resources :users, only: [:new, :create, :index, :update, :destroy] 
   resources :drill_groups 
+
   resources :tags
   resources :levels
 
