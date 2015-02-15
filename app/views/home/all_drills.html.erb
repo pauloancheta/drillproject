@@ -1,0 +1,5 @@
+<div id="all_drills_container">
+  <% DrillGroup.all.each do |drill_group| %>
+    <%= render partial: "/home/all_drills_box", locals: { drill_group: drill_group } %>
+  <% end %>
+</div>

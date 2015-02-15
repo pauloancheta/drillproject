@@ -1,0 +1,8 @@
+<div id="my_drills_container">
+  <% current_user.drill_group_subscriptions.each do |drill_group_subscription| %>
+    <%= render partial: "/home/my_drill_box", locals: { drill_group: drill_group_subscription } %>
+  <% end %>
+</div>
+<div id="randomize_and_start">
+  <%= link_to "Randomize and Start Drills Now", root_path, class: "btn btn-default" %>
+</div>

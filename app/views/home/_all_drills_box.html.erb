@@ -1,0 +1,12 @@
+<div id="<%= dom_id(drill_group) %>" style="display: inline-block; width: 300px; border: 1px solid black; ">
+  <h3 style="text-align: center; "><%= drill_group.name %></h3>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center">
+      <% if Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).empty? %>
+        <%= link_to "Add to My Drills", drill_group_subscriptions_path(drill_group), class: "btn btn-default", method: :post %>
+      <% else %>
+        <%= link_to "Remove from My Drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-danger", method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
