@@ -7,8 +7,8 @@
 
   <% if user_signed_in? %>
   <div class="navbar-left ">
-    <%= link_to "All Drills", drills_path %>
-    <%= link_to "My Drills", drills_path %>
+    <%= link_to "All Drills", root_path %>
+    <%= link_to "My Drills", root_path %>
   </div>  
     <div class="navbar-right">
     <p class="navbar-text">Welcome <%= current_user.first_name %></p>
@@ -16,8 +16,8 @@
     </div>
     <% elsif user_signed_in? && user.is_admin %>
      <div class="navbar-left ">
-    <%= link_to "Make Drills", drills_path %>
-    <%= link_to "All Drills", drills_path %>
+    <%= link_to "Make Drills", root_path %>
+    <%= link_to "All Drills", root_path %>
   </div>
     <div class="navbar-right">
     <p class="navbar-text">Welcome <%= current_user.first_name %></p>
@@ -31,8 +31,8 @@
     </div>
   <% end %>
   <div class="navbar-left">
-    <%= link_to "About", drills_path %>
-    <%= link_to "Contact", drills_path %>
+    <%= link_to "About", root_path %>
+    <%= link_to "Contact", root_path %>
   </div>
   </div>
 </nav>
