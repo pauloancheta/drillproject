@@ -21,17 +21,3 @@
   transition: .3s;
 }
 
-.bluebar {
-  height: 40px;
-  width: 100%;
-  color: #4d496c;
-  background: white;
-  margin-top: -25px;
-  padding-top: 5px;
-}
-
-.line {
-  height: 2px;
-  width: 100%;
-  background: black;
-}

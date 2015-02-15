@@ -1,8 +1,20 @@
-<%= @user.first_name %> <br>
-<%= @user.last_name %> <br>
-<%= @user.email %> <br>
+<div class="liner">
+  <hr>
+</div>
+
+<div class="col-md-4 text-center large-text">
+  <%= @user.first_name %> 
+  <%= @user.last_name %>
+</div>
+
+<div class="col-md-4 text-center medium-text">
+  <%= @user.email %>
+</div>
+
+
+ 
+
+
 <% if current_user.is_admin %>
   "You are an admin"
   <% end %>
-
-<%= link_to "EDIT USER", edit_user_path(@user) %>
