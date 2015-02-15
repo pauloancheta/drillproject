@@ -1,4 +1,4 @@
-<%= form_for [@drill, @solution] do |f| %>
+<%= form_for [@drill, @solution], class: "form-horizontal" do |f| %>
 	<p><%= f.radio_button :exact_match, true %>Exact Match
   	<%= f.radio_button :exact_match, false %>Regex</p>
 

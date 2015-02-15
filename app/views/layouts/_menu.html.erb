@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <div class="container-fluid">
+
+  <div class="navbar-header">
+    <%= link_to image_tag("drillzlogo.png", :class => 'navbar-brand'), root_path %>
+  </div>
+
+  <% if user_signed_in? %>
+  <div class="navbar-left ">
+    <%= link_to "All Drills", drills_path %>
+    <%= link_to "My Drills", drills_path %>
+  </div>  
+    <div class="navbar-right">
+    <p class="navbar-text">Welcome <%= current_user.first_name %></p>
+      <span class="btn btn-default navbar-btn"><%= link_to "Sign Out", sessions_path, method: :delete%></span>
+    </div>
+    <% elsif user_signed_in? && user.is_admin %>
+     <div class="navbar-left ">
+    <%= link_to "Make Drills", drills_path %>
+    <%= link_to "All Drills", drills_path %>
+  </div>
+    <div class="navbar-right">
+    <p class="navbar-text">Welcome <%= current_user.first_name %></p>
+      <span class="btn btn-default navbar-btn"><%= link_to "Sign Out", sessions_path, method: :delete%></span>
+    </div>
+  <% else %>
+    <div class="navbar-right" >
+      <button class="btn btn-default navbar-btn"><%= link_to "Sign In", new_session_path %></button>
+      Or
+      <button class="btn btn-default navbar-btn"><%= link_to "Sign Up", new_user_path %></button>
+    </div>
+  <% end %>
+  <div class="navbar-left">
+    <%= link_to "About", drills_path %>
+    <%= link_to "Contact", drills_path %>
+  </div>
+  </div>
+</nav>
+<hr id="navline">

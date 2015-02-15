@@ -2,9 +2,11 @@ class SolutionsController < ApplicationController
   before_action :get_drill
   	before_action :find_solution, 
                   only: [ :edit, :update, :destroy]
+    before_action :find_drill, only: [ :new, :create, :edit, :destroy ]
 
 	def new
 		@solution = Solution.new 
+		
 		render :new
 	end
 
@@ -14,6 +16,7 @@ class SolutionsController < ApplicationController
 		if @solution.save
 			redirect_to [@drill.drill_group, @drill], notice: "Solution successfully created!" #add this once the drill model exists
 		else
+			flash[:alert] = get_errors
 			render :new 
 		end
 	end
@@ -25,13 +28,18 @@ class SolutionsController < ApplicationController
 		if @solution.update solution_params
       		redirect_to [@drill.drill_group, @drill], notice: "Question updated successfully!" #add once drill model exists
    	 	else
+   	 		flash[:alert] = get_errors
       		render :edit
     	end
 	end
 
 	def destroy
-		@solution.destroy
-    redirect_to [@drill.drill_group, @drill], notice: "Question deleted successfully!" #add this once drill model exists
+		if @solution.destroy
+    	redirect_to [@drill.drill_group, @drill], notice: "Drill solution deleted successfully!" 
+    else
+      flash[:alert] = get_errors
+      redirect_to @solution.drill
+    end
 	end
 
 private
@@ -46,5 +54,13 @@ end
 
 	 def find_solution
     	@solution = Solution.find params[:id]
+  	end
+
+  	def find_drill
+  		@drill = Drill.find params[:drill_id]
+  	end
+
+  	def get_errors
+    	@solution.errors.full_messages.join('; ')
   	end
 end

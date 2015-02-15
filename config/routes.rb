@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # TODO: Relationships to be added later
-
   resources :users, only: [:new, :create]
   resources :tags
   resources :levels

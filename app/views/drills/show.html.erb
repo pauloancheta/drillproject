@@ -1,3 +1,13 @@
 <h1><%= @drill.title %></h1>
-<p><%= @drill.body%></p>
-<%= link_to "delete", drill_group_drill_path(@drill_group, @drill), method: :delete %>
+<p><%= @drill.description%></p>
+
+<%= link_to "Edit Drill",  edit_drill_path(@drill), class: 'btn btn-primary' %>
+
+<h3>Drill Solutions</h3>
+<% @solutions.each do |solution| %>
+	<p><%= solution.content %>
+	<%= link_to "Edit", edit_drill_solution_path(@drill, solution), class: 'btn btn-xs btn-primary' %>
+	<%= link_to "Delete", drill_group_drill_path(@drill_group, @drill), method: :delete, data: {confirm: 'Delete solution? This action cannot be undone.'}, class: 'btn btn-xs btn-danger' %></p>
+<% end %>
+
+<%= link_to "Add Drill Solution", new_drill_solution_path(@drill), class: 'btn btn-primary' %>

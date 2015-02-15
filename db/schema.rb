@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150214220823) do
 
   create_table "drills", force: :cascade do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "drill_group_id"

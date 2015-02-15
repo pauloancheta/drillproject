@@ -7,19 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
-  <%= link_to "Home", root_path %>
-  | 
-  <% if user_signed_in? %>
-    Welcome <%= current_user.first_name %>
-    <%= link_to "Sign Out", sessions_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign In", new_session_path %>
-    or
-    <%= link_to "Sign Up", new_user_path %>
-  <% end %>
-</nav>
-<hr>
+
+<%= render 'layouts/menu' %>
+
+
 <% if flash[:notice] %>
   <div class="alert alert-success"><%= flash[:notice] %></div>
 <% elsif flash[:alert] %>
@@ -27,7 +18,11 @@
 <% end %>
 
 <div class="container container-fluid">
-  <%= flash[:notice] || flash[:alert] %>
+  <%#= link_to "Drills index", drills_path %> 
+  <%#= link_to "New Drill", new_drill_path %> 
+  <%#= link_to "Drills index path", drills_path %> 
+  <%#= link_to "New Drill", new_drill_path %> 
+  <%#= link_to "New Drill Solution", new_solution_path %>
   <%= yield %>
 </div>
 
