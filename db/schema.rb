@@ -11,19 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215002553) do
+ActiveRecord::Schema.define(version: 20150215004556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "admins", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
 
   create_table "drill_groups", force: :cascade do |t|
     t.string   "name"
@@ -31,7 +22,10 @@ ActiveRecord::Schema.define(version: 20150215002553) do
     t.integer  "difficulty"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "level_id"
   end
+
+  add_index "drill_groups", ["level_id"], name: "index_drill_groups_on_level_id", using: :btree
 
   create_table "drills", force: :cascade do |t|
     t.string   "title"
@@ -117,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150215002553) do
   add_index "users", ["drill_id"], name: "index_users_on_drill_id", using: :btree
   add_index "users", ["solution_id"], name: "index_users_on_solution_id", using: :btree
 
+  add_foreign_key "drill_groups", "levels"
   add_foreign_key "drills", "drill_groups"
   add_foreign_key "drills", "levels"
   add_foreign_key "scorecards", "drill_groups"
