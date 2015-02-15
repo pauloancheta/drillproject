@@ -42,9 +42,11 @@
 }
 
 .jumbotron {
-  background: url("link_images/homesplash.png");
+  background-image: url("link_images/homesplash3.jpeg");
+  background-repeat: no-repeat;
   margin-top: -25px;
-  height: 550px;
+  height: 600px;
+  width: 100%;
 }
 
 .homesplash {
