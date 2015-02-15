@@ -19,12 +19,28 @@
     <%= link_to "About", root_path, class: "navlink" %>
   </div>
 
-  <div class="col-md-2 navbutton text-center">
-    <%= link_to "Contact", root_path, class: "navlink" %>
-  </div>
+  <% if user_signed_in? %>
 
-  <div class="col-md-2 navbutton text-center">
-    <%= link_to "Sign Out", root_path, class: "navlink" %>
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "My Account", user_path(current_user), class: "navlink" %>
+    </div>
+
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "Sign Out", sessions_path, method: :delete, class: "navlink" %>
+    </div>
+    
+  <% else %>
+
+    <div class="col-md-2">
+      <%= link_to "Sign In", new_session_path, class: "navlink" %>
+    </div>
+
+    <div class="col-md-2">
+      <%= link_to "Sign Up", new_user_registration_path, class: "navlink" %>
+    </div>
+
+  <% end %>
+  
   </div>
 
 </div>
