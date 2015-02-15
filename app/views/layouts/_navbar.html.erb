@@ -7,16 +7,16 @@
 
 
   <div class="col-md-2 navbutton text-center">
-    <%= link_to "All Drills", root_path, class: "navlink"%>
+    <%= link_to "All Drills", all_drills_path, class: "navlink"%>
   </div>
 
   <div class="col-md-2 navbutton text-center">
-    <%= link_to "My Drills", root_path, class: "navlink"%>
+    <%= link_to "My Drills", my_drills_path, class: "navlink"%>
   </div>
 
 
   <div class="col-md-2 navbutton text-center">
-    <%= link_to "About", root_path, class: "navlink" %>
+    <%= link_to "About", about_path, class: "navlink" %>
   </div>
 
   <% if user_signed_in? %>
@@ -44,3 +44,8 @@
   </div>
 
 </div>
+
+<%# Added to display admin partial if current_user is admin %>
+<% if current_user.is_admin %>
+  <%= render 'layouts/admin' %>
+<% end %> 
