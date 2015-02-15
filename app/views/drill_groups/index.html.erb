@@ -1,14 +1,7 @@
-<h1>Drill Groups</h1>
-
-<h4><%= link_to "New Drill Group", new_drill_group_path %></h4>
+<h1>Drill Groups<span class="pull-right"><%= link_to "New Drill Group", new_drill_group_path, class: "btn btn-default" %></span></h1>
 
 <div class="container">
-  <% @drill_groups.each do |f| %>
-    <p><%= link_to f.name, drill_group_path(f) %><p>
-    <p>Description: <%= f.description %></p>
-    <p><%= link_to "Edit", edit_drill_group_path(f) %></p>
-    <p><%= link_to "Delete", drill_group_path(f), method: :delete, data: {confirm: "Are you sure?"} %></p>
-    <hr>
-
+  <% @drill_groups.each do |drill_group| %>
+    <%= render partial: "/drill_groups/admin_drill_group_block", locals: { drill_group: drill_group } %>
   <% end %>
 </div>   
