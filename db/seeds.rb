@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 levels = Level.create([{ title: "Beginner "}, {title: "Intermediate"},{title: "Advanced"}])
+tags = Tag.create([{title: "Ruby"}, {title: "Javascript"}, {title: "HTML/CSS"}])
