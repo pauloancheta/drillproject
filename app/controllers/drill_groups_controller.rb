@@ -24,6 +24,7 @@ class DrillGroupsController < ApplicationController
 
   def show
     @drill_group = DrillGroup.find(params[:id])
+    @current_user = User.last
   end
 
 
