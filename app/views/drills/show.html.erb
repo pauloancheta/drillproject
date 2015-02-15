@@ -7,7 +7,7 @@
 <% @solutions.each do |solution| %>
 	<p><%= solution.content %>
 	<%= link_to "Edit", edit_drill_solution_path(@drill, solution), class: 'btn btn-xs btn-primary' %>
-	<%= link_to "Delete", drill_solution_path(@drill, solution), method: :delete, data: {confirm: 'Delete solution? This action cannot be undone.'}, class: 'btn btn-xs btn-danger' %></p>
+	<%= link_to "Delete", drill_group_drill_path(@drill_group, @drill), method: :delete, data: {confirm: 'Delete solution? This action cannot be undone.'}, class: 'btn btn-xs btn-danger' %></p>
 <% end %>
 
 <%= link_to "Add Drill Solution", new_drill_solution_path(@drill), class: 'btn btn-primary' %>

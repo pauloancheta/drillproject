@@ -1,0 +1,7 @@
+<h1>Scorecard</h1> 
+
+<%= @scorecards.each do |scorecard| %>
+<p>Drill Group: <%= scorecard.drill_group.name %></p>
+<p>Taken: <%= scorecard.total_drills %> times</p>
+<p>Score: <%= number_to_percentage(scorecard.correct_drills.to_f/scorecard.total_drills.to_f) %></p>
+<% end %>
