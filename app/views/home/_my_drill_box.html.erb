@@ -1,0 +1,28 @@
+<div id="<%= dom_id(drill_group) %>" style="display: inline-block; width: 300px; border: 1px solid black; ">
+  <h3 style="text-align: center; "><%= drill_group.name %></h3>
+  <div class="row">
+    <div class="col-md-12">
+      <% taken_count = current_user.scorecards.where(drill_group_id: drill_group.id).count %>
+      <%= "<p id=\"taken\">Taken: #{taken_count} times</p>".html_safe unless taken_count <= 0 %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <% correct_count = current_user.scorecards.where(drill_group_id: drill_group.id).sum(:correct_drills) %>
+      <% total_count = current_user.scorecards.where(drill_group_id: drill_group.id).sum(:total_drills) %>
+      <% score = (100.0 * correct_count / total_count).to_i unless total_count <= 0 %>
+      <%= "<p id=\"score\">Score: #{score}%</p>".html_safe unless total_count <= 0 %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <%= link_to "Start", root_path, class: "btn btn-default" %>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <%= link_to "Remove", drill_group_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).last), class: "btn btn-default", method: :delete %>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

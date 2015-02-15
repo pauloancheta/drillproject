@@ -11,7 +11,6 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-
   def destroy
     @drill_group = DrillGroup.find params[:drill_group_id]
     @subscription = @drill_group.subscriptions.find params[:id]
