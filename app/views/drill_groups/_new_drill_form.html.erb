@@ -1,0 +1,5 @@
+<%= simple_form_for [@drill_group, @drill_group.drills.new], class: "form-horizontal" do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit "Save Drill and Start Adding Solutions", class: "btn btn-default" %>
+<% end %>
