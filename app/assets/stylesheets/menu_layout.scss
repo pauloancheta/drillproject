@@ -1,5 +1,7 @@
 .navbar{
   margin: 0px;
+  background: #1c1c1c;
+  border-radius: 0px;
 }
 .navbar a{
   font-size: 2em;
@@ -13,7 +15,6 @@
   padding-bottom: 0px;
   padding-top: 0px;
   position: relative;
-  bottom: -40px;
 }
 
 .navbar-right {
@@ -35,7 +36,7 @@
 }
 
 hr {
-  border: 3px solid #e56262;
+  border: 3px solid black;
   margin: 0px 0px 20px 0px;
 }
 
