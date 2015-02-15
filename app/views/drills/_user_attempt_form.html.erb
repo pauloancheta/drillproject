@@ -1,3 +1,12 @@
+<%#
+  TODO
+  USER
+  This form appears on the Drill show page when the User is attempting a Drill. It would be best executed with AJAX.
+  Upon page load (prior to User submitting an attempt), the correct answers should not be rendered.
+  Upon successful submission, the attempt form should remain visible but the button should be disabled. The correct answers should be rendered in the below div. The scorecard should be updated to reflect their attempt.
+  Upon unsuccessful submission, the flash[:alert] should be rendered, and the page should remain as is.
+%>
+
 Your answer:<br />
 <textarea id="attempt_text"></textarea>
 <input id="attempt_submit" type="submit" value="Submit Answer" class="btn btn-default" />
