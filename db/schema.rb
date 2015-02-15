@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20150214223638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "admins", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "drill_groups", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -89,7 +98,14 @@ ActiveRecord::Schema.define(version: 20150214223638) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "drill_id"
+    t.integer  "solution_id"
+    t.integer  "drill_group_id"
   end
+
+  add_index "users", ["drill_group_id"], name: "index_users_on_drill_group_id", using: :btree
+  add_index "users", ["drill_id"], name: "index_users_on_drill_id", using: :btree
+  add_index "users", ["solution_id"], name: "index_users_on_solution_id", using: :btree
 
   add_foreign_key "drill_groups", "levels"
   add_foreign_key "drills", "drill_groups"
@@ -99,4 +115,7 @@ ActiveRecord::Schema.define(version: 20150214223638) do
   add_foreign_key "subscriptions", "users"
   add_foreign_key "tagifications", "drill_groups"
   add_foreign_key "tagifications", "tags"
+  add_foreign_key "users", "drill_groups"
+  add_foreign_key "users", "drills"
+  add_foreign_key "users", "solutions"
 end

@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <%= render 'layouts/menu' %>
+
 
 <% if flash[:notice] %>
   <div class="alert alert-success"><%= flash[:notice] %></div>
@@ -16,12 +18,11 @@
 <% end %>
 
 <div class="container container-fluid">
-  <%= link_to "Drills index", drills_path %> |
-  <%= link_to "New Drill", new_drill_path %> |
-  <%= link_to "Drills index path", drills_path %> |
-  <%= link_to "New Drill", new_drill_path %> |
+  <%#= link_to "Drills index", drills_path %> 
+  <%#= link_to "New Drill", new_drill_path %> 
+  <%#= link_to "Drills index path", drills_path %> 
+  <%#= link_to "New Drill", new_drill_path %> 
   <%#= link_to "New Drill Solution", new_solution_path %>
-
   <%= yield %>
 </div>
 

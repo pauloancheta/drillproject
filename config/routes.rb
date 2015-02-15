@@ -10,16 +10,22 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create]
+  resources :tags
+  resources :levels
+
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
-  resources :tags
   
+  resources :drills, only: [] do
+    resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
+  end
   resources :drill_groups, only: [] do
+    resources :drills
+    resources :subscriptions
+    resources :scorecards
     resources :tags, only: [] do
       resources :tagifications, only: [:create, :destroy]
     end
   end
-
-  resources :levels
 end
