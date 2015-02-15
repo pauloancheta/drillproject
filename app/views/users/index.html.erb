@@ -1,6 +1,5 @@
-<% if user_signed_in? && current_user.is_admin? %>
-  <h1>All Users</h1>
-
+<% if user_signed_in? %>
+	<h1>All Users</h1>
   <% @users.each do |u| %>
     <% if u != current_user%>
       <div class="well">
@@ -21,4 +20,6 @@
 
   <h1> Sorry, you must be an admin user to access this page </h1> 
 
+
 <% end %>
+
