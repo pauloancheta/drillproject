@@ -1,9 +1,23 @@
-<% if user_signed_in? %>
-  <% if current_user.is_admin %>
-    <!-- it excludes the current user -->
-    <h3><%= link_to "Users", users_path %></h3>
-    <h3><%= link_to "Drill Groups", drill_groups_path %></h3>
-  <% end %>
-<% end %>
+<div class="jumbotron">
+
+  <div class="col-md-5 homesplash medium-text white-text">
+    
+
+    <div class="large-text">Welcome to Codecore Drills, </div>
+
+        <hr>
+  
+    a place to hone your programming
+    skills doing a bunch of sweet drills.
+    Bang out some lines, dummy some code, 
+    sign up ya nutsack.
+
+  </div>
+
+  <div class="col-md-6 homesplash text-center">
+    <%= image_tag ("codecore_drill.png") %>
+  </div>
+
+</div>
 
 <%= render '/tags/index' %>
