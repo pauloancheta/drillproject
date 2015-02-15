@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
   # reference to :user is nullified
   has_many :solutions, dependent: :nullify
 
+  # :user has many :scorecards and upon deletion, :scorecards
+  # are destroyed
+  has_many :scorecards, dependent: :destroy
+  has_many :attempted_drill_groups, through: :scorecards, source: :drill_group
+
   validates :email, presence: true, uniqueness: true,
             email_format: true
 
