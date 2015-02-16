@@ -2,18 +2,24 @@
   <h2><%= @drill_group.name %></h2>
 </div>
 <div id="drill_prompt">
-  <%= render "/drills/drill_prompt" %>
+  <strong><%= @drill.title %></strong>
+  <br>
+  <%= @drill.description %>
+  <%#= render "/drills/drill_prompt" %>
 </div>
 
 <div id="user_attempt_form">
   <%= render "/drills/user_attempt_form" %>
 </div>
-<% if current_user.is_admin %>
-  <div id="correct_answers">
+<%# if current_user.is_admin %>
+  <div id="correct_answers" >
     Correct Answers:<br />
+    <% n = 0 %>
     <% @drill.solutions.each do |solution| %>
-      <%= render partial: "/drills/correct_answers", locals: { solution: solution } %>
+      <div id="<%= n %>"><%= solution.content %></div><br>
+      <% n += 1 %>
+      <%#= render partial: "/drills/correct_answers", locals: { solution: solution } %>
     <% end %>
   </div>
 
-<% end %>
+<%# end %>
