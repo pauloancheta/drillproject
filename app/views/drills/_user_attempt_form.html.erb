@@ -8,6 +8,10 @@
 %>
 
 Your answer:<br />
-<textarea id="attempt_text"></textarea>
-<br>
-<input id="attempt_submit" type="submit" value="Submit Answer" class="btn btn-default" />
+<%= simple_form_for Solution.new, url: attempt_path, method: :patch, class: "form-horizontal", remote: true do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :drill_group_id, value: drill_group.id %>
+  <%= f.hidden_field :drill_id, value: drill.id %>
+  <%= f.hidden_field :scorecard_id, value: scorecard.id %>
+  <%= f.submit %>
+<% end %>

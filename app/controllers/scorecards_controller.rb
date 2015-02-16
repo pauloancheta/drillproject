@@ -15,7 +15,7 @@ class ScorecardsController < ApplicationController
       redirect_to [@drill_group, @scorecard]
     else
       flash[:alert] = get_errors
-      render: :new
+      render :new
     end
   end
   
@@ -37,6 +37,35 @@ class ScorecardsController < ApplicationController
     else
       flash[:alert] = get_errors
       redirect_to [@drill_group, @scorecard]
+    end
+  end
+
+  def start_attempt
+
+  end
+
+  def attempt
+    @drill_group = DrillGroup.find params.require(:solution).permit(:drill_group_id)
+    @drill = Drill.find params.require(:solution).permit(:drill_id)
+    @scorecard = Scorecard.find params.require(:solution).permit(:scorecard_id)
+    flag_correct_solution = false
+    @drill.solutions.each do |solution|
+      if solution.exact_match && (solution.content == params[:solution][:content])
+        flag_correct_solution = true
+      elsif (!solution.exact_match) && (Regexp.new solution.content =~ params[:solution][:content])
+        flag_correct_solution = true
+      end
+    end
+    if flag_correct_solution
+      @scorecard.correct_drills += 1
+    end
+    respond_to do |format|
+      if @scorecard.save
+        format.js { render }
+      else
+        flash[:alert] = get_errors
+        format.js { render }
+      end
     end
   end
 

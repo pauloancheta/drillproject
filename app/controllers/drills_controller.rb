@@ -4,7 +4,7 @@ class DrillsController < ApplicationController
 
   # Get the desired drill for the show, edit,
   # update, and destroy actions before they execute
-  before_action :get_drill, only: [:show, :edit, :update, :destroy, :attempt]
+  before_action :get_drill, only: [:show, :edit, :update, :destroy]
   # respond_to :js
 
   def index
@@ -63,10 +63,6 @@ class DrillsController < ApplicationController
       flash[:alert] = get_errors
       redirect_to [@drill_group, @drill]
     end
-  end
-
-  def attempt
-
   end
 
   private

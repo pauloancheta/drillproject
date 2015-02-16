@@ -1,4 +1,4 @@
-<div id="drill_group_header">
+ <div id="drill_group_header">
   <h2><%= @drill_group.name %></h2>
 </div>
 <div id="drill_prompt">
@@ -9,15 +9,12 @@
 </div>
 
 <div id="user_attempt_form">
-  <%= render "/drills/user_attempt_form" %>
+  <%= render partial: "/drills/user_attempt_form", locals: { drill_group: @drill_group, drill: @drill, scorecard: Scorecard.new } %>
 </div>
 <%# if current_user.is_admin %>
   <div id="correct_answers" >
     Correct Answers:<br />
-    <% n = 0 %>
     <% @drill.solutions.each do |solution| %>
-      <div id="<%= n %>"><%= solution.content %></div><br>
-      <% n += 1 %>
       <%#= render partial: "/drills/correct_answers", locals: { solution: solution } %>
     <% end %>
   </div>
