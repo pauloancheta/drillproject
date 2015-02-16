@@ -24,8 +24,8 @@ class DrillsController < ApplicationController
         format.html {redirect_to [@drill_group, @drill]}
         format.js {render}
       else
-        format.html {flash[:alert] = get_errors}
-        #render :new
+        flash[:alert] = get_errors
+        format.html { render :new }
         format.js {render}
       end
 # =======

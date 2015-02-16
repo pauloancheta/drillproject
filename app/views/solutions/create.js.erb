@@ -1,8 +1,13 @@
 $('#flash_message').html('');
+alert('solution');
 
 <%# Display the flash messages if any %>
-<%= "$('#flash_message').append('<div class=\"alert alert-success\">#{flash[:notice]}</div>');".html_safe if flash[:notice] %>
-<%= "$('#flash_message').append('<div class=\"alert alert-danger\">#{flash[:alert]}</div>');".html_safe if flash[:alert] %>
+<% if flash[:notice] %>
+  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
+<% end %>
+<% if flash[:alert] %>
+  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
+<% end %>
 
 <% unless @solution.errors.any? %>
   <%# Show the create associated Solution form %>

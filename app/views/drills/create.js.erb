@@ -1,8 +1,13 @@
 $('#flash_message').html('');
+alert('drill');
 
 <%# Display the flash messages if any %>
-<%= "$('#flash_message').append('<div class=\"alert alert-success\">#{flash[:notice]}</div>');".html_safe if flash[:notice] %>
-<%= "$('#flash_message').append('<div class=\"alert alert-danger\">#{flash[:alert]}</div>');".html_safe if flash[:alert] %>
+<% if flash[:notice] %>
+  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
+<% end %>
+<% if flash[:alert] %>
+  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
+<% end %>
 
 <% unless @drill.errors.any? %>
   <%# Append the created Drill to the list of Drills %>

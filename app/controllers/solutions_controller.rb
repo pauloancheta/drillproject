@@ -3,6 +3,7 @@ class SolutionsController < ApplicationController
   before_action :find_solution,
                   only: [ :edit, :update, :destroy]
   before_action :find_drill, only: [ :new, :create, :edit, :destroy ]
+
   def new
     @solution = Solution.new
 
