@@ -1,3 +1,9 @@
+<%#
+  TODO
+  ADMIN ONLY
+  This form appears on the pages to create new and edit existing DrillGroups.
+  Upon submission, successful saves should redirect to the admin list of all DrillGroups.
+%>
 <%= simple_form_for @drill_group, class: "form-horizontal" do |f| %>
   <%= f.input :name %>
   <%= f.input :description, as: :text %>
@@ -5,4 +11,3 @@
   <%= f.association :tags, as: :check_boxes, label_method: :title, label: 'Categories' %>
   <%= f.button :submit %>
 <% end %>
-

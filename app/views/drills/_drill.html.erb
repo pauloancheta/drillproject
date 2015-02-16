@@ -1,4 +1,12 @@
- <%= simple_form_for [@drill_group, @drill], class: "form-horizontal" do |f| %>
+<%#
+  TODO
+  ADMIN ONLY
+  This form appears on the admin Drill edit page.
+  Upon successful submission, successful saves should redirect to the show page for the addressed Drill.
+  Upon unsuccessful submission, the flash[:alert] should be displayed, and the edit action rendered.
+%>
+
+<%= simple_form_for [@drill_group, @drill], class: "form-horizontal" do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.button :submit %>

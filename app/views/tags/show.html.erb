@@ -1,10 +1,8 @@
-<%# TODO: tag show %>
-<h1>Tag: <%= @tag.title %></h1>
-<p>Drills:</p>
-<% @tag.drill_groups.each do |drill| %>
-  <p><%= drill.name %></p>
+<h1><%= @tag.title %></h1>
+<% @tag.drill_groups.each do |drill_group| %>
+  <%= render partial: "/home/all_drills_box", locals: { drill_group: drill_group } %>
 <% end %>
-<%= link_to 'edit', edit_tag_path(@tag) %>
- | 
-<%= link_to 'delete', tag_path(@tag), method: :delete %>
 
+<%# TODO Display for admins here? Or elsewhere? %>
+<%#= link_to 'edit', edit_tag_path(@tag) %>
+<%#= link_to 'delete', tag_path(@tag), method: :delete %>
