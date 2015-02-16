@@ -22,6 +22,11 @@
   padding: 40px;
 }
 
+a {
+ color: #4d496c;
+  transition: .3s; 
+}
+
 .bluebar {
   height: 40px;
   width: 100%;
