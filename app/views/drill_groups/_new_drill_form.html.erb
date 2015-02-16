@@ -5,7 +5,7 @@
   Upon successful submission, this form should remove this form. In it's place, a plaintext representation of the newly created Drill (listing the title and description) should be rendered. Additionally, it should display the previously hidden form to add a new Solution to be associated with this Drill.
   Upon unsuccessful submission, the flash[:alert] should be displayed and the page should stay as is.
 %>
-<%= simple_form_for [@drill_group, @drill_group.drills.new], class: "form-horizontal" do |f| %>
+<%= simple_form_for [@drill_group, @drill_group.drills.new], remote: true, html: { class: "form-horizontal", id: "new-drill-form" } do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.submit "Save Drill and Start Adding Solutions", class: "btn btn-default" %>
