@@ -1,1 +1,19 @@
-alert('test');
+$('#flash_message').html('');
+
+<%# Display the flash messages if any %>
+<% if flash[:notice] %>
+  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
+<% end %>
+<% if flash[:alert] %>
+  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
+<% end %>
+
+<% unless @scorecard.errors.any? %>
+  $('#<%= dom_id(@drill) %>').remove();
+  $('#prev_drill_message').html('');
+  $('#prev_drill_message').append('<strong><%= @drill.title %>:</strong> <%= @drill.description %><br /><br />');
+  $('#prev_drill_message').append('<strong>Your Solution:</strong> <%= @user_solution %><br /><br />');
+  $('#prev_drill_message').append('<%= @correct ? "Your solution was correct!<br /><br />".html_safe : "Your solution was incorrect!<br /><br />".html_safe %>');
+  $('#prev_drill_message').append('<strong>Correct Solutions:</strong> <%= @correct_solutions.html_safe %><br /><br />');
+  $('#all_drills div:nth-child(2)').show();
+<% end %>
