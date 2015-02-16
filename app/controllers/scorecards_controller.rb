@@ -65,7 +65,7 @@ class ScorecardsController < ApplicationController
     @drill.solutions.each do |solution|
       @correct_solutions += "<strong>"
       @correct_solutions += solution.exact_match ? "Exact Match" : "Regex"
-      @correct_solutions += ":</strong> #{solution.content}<br />"
+      @correct_solutions += ":</strong> #{solution.content.gsub("\\", "&#92;")}<br />"
       if solution.exact_match && (solution.content == @user_solution)
         @correct = true
       elsif (!solution.exact_match) && (Regexp.new(solution.content) =~ @user_solution)
