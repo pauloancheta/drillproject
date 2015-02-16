@@ -24,6 +24,9 @@ class DrillGroupsController < ApplicationController
 
   def show
     @drill_group = DrillGroup.find(params[:id])
+    if @drill_group.drills.length > 0
+      @drill = @drill_group.drills.find(params[:id])
+    end
   end
 
 
