@@ -8,7 +8,7 @@
   Upon successful submission, successful saves should save the Solution and automatically associate it with the displayed Drill. The form should be removed. A plaintext version (solution and type [exactmatch/regex]) should be prepended to the solutions container. Finally, a new form to create another solution should be prepended to the solutions container.
   Upon unsuccessful submission, the flash[:alert] should be rendered, and the page should remain as is.
 %>
-<%= simple_form_for [Drill.find(1), Drill.find(1).solutions.new], class: "form-horizontal" do |f| %>
+<%= simple_form_for [@drill, @drill.solutions.new], class: "form-horizontal" do |f| %>
   <%= f.input :exact_match, as: :radio_buttons, collection: [[true, 'Exact Match'], [false, 'Regex']], label_method: :last, value_method: :first, label: '' %>
   <%= f.input :content, label: "Solution Description" %>
   <%= f.submit "Save and (optionally) Add Another Solution", class: "btn btn-default" %>
