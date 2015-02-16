@@ -14,6 +14,9 @@ $('#flash_message').html('');
   $('#prev_drill_message').append('<strong><%= @drill.title %>:</strong> <%= @drill.description %><br /><br />');
   $('#prev_drill_message').append('<strong>Your Solution:</strong> <%= @user_solution %><br /><br />');
   $('#prev_drill_message').append('<%= @correct ? "Your solution was correct!<br /><br />".html_safe : "Your solution was incorrect!<br /><br />".html_safe %>');
-  $('#prev_drill_message').append('<strong>Correct Solutions:</strong> <%= @correct_solutions.html_safe %><br /><br />');
+  $('#prev_drill_message').append('<strong>Correct Solutions:</strong><br /><%= @correct_solutions.html_safe %><br /><br />');
   $('#all_drills div:nth-child(2)').show();
+  if ($('#all_drills div:nth-child(3)') == $('#return_to_my_drills')) {
+    $('#return_to_my_drills').show();
+  }
 <% end %>
