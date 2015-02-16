@@ -5,12 +5,20 @@ $(document).ready(function () {
       if($('#attempt_text').val() == $('#' + i).text()) {
         $('.correctdiv').fadeIn();
         $('.incorrectdiv').hide();
+        // window.location.replace("/drill_groups/#{}/drills");
         break;
       };
       if(i == 99){
         $('.incorrectdiv').fadeIn();
         $('.correctdiv').fadeOut();
+
       };
     };
   });
+
+
+
+
+
+
 });
