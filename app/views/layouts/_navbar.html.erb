@@ -43,21 +43,26 @@
          <%= render '/users/form' %>
        </div>
       </div>
+
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "Sign In", new_session_path, class: "navlink" %>
+    </div>
+
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "Sign Up", new_user_path, class: "navlink" %>
     </div>
 
   <% end %>
   
-  </div>
 
 </div>
 
+<div class="liner">
+  <hr>
+</div>
 
-
-<%# Added to display admin partial if current_user is admin %>
-<% if user_signed_in? && current_user.is_admin %>
-  <%= render 'layouts/admin' %>
-<% end %> 
-
-
-
-
+<div class="admin-nav">
+  <% if user_signed_in? && current_user.is_admin %>
+    <%= render 'layouts/admin' %>
+  <% end %>
+</div>

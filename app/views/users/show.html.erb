@@ -1,8 +1,19 @@
-<%= @user.first_name %> <br>
-<%= @user.last_name %> <br>
-<%= @user.email %> <br>
+<% if user_signed_in? %>
+  <div class="pagesplash">
+    <div class="large-text white-text text-center">
+        <br>
+        <%= @user.first_name %> <%= @user.last_name %>
+    </div>
+<hr>
+    <div class="medium-text white-text text-center">
+        <%= @user.email %>
+    </div>
+
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
 <% if current_user.is_admin %>
   "You are an admin"
   <% end %>
-
-<%= link_to "EDIT USER", edit_user_path(@user) %>
+  <% end %>

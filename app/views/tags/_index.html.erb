@@ -1,8 +1,17 @@
-<ul>
-<%# @tags.each do |tag| %>
-  <li><%#= link_to tag.title, tag %></li>
-<%# end %>
-</ul>
+<% if user_signed_in? %>
+  <div class="pagesplash">
+    <div class="large-text white-text text-center">
+        <br>
+        Welcome back, <%= current_user.first_name %>
+    </div>
+<hr>
+    <div class="medium-text white-text text-center">
+         hop on the drill train buddy.
+    </div>
+
+  </div>
+<% end %>
+
 
 
 <div class="col-md-12 spacer"></div>
