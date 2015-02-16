@@ -1,4 +1,4 @@
-<h1><%= @tag.title %></h1>
+<h1><%= @tag.title.capitalize %></h1>
 <% @tag.drill_groups.each do |drill_group| %>
   <%= render partial: "/home/all_drills_box", locals: { drill_group: drill_group } %>
 <% end %>

@@ -9,7 +9,7 @@
   Upon unsuccessful submission, the flash[:alert] should be rendered, and the page should remain as is.
 %>
 
-<%= simple_form_for [@drill, @drill.solutions.new], remote: true, html: { class: "form-horizontal", id: "new-drill-solution" } do |f| %>
+<%= simple_form_for [drill, drill.solutions.new], remote: true, html: { class: "form-horizontal", id: "new-drill-solution" } do |f| %>
   <%= f.input :exact_match, as: :radio_buttons, collection: [[true, 'Exact Match'], [false, 'Regex']], label_method: :last, value_method: :first, label: '' %>
   <%= f.input :content, label: "Solution Description" %>
   <%= f.submit "Save and (optionally) Add Another Solution", class: "btn btn-default" %>

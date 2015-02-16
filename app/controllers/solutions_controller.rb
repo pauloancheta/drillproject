@@ -3,6 +3,7 @@ class SolutionsController < ApplicationController
   before_action :find_solution,
                   only: [ :edit, :update, :destroy]
   before_action :find_drill, only: [ :new, :create, :edit, :destroy ]
+
   def new
     @solution = Solution.new
 
@@ -12,11 +13,15 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new solution_params
     @solution.drill = @drill
-    if @solution.save
-      redirect_to [@drill.drill_group, @drill], notice: "Solution successfully created!" #add this once the drill model exists
-    else
-      flash[:alert] = get_errors
-      render :new
+    respond_to do |format|
+      if @solution.save
+        format.html { redirect_to [@drill.drill_group, @drill], notice: "Solution successfully created!" } #add this once the drill model exists
+        format.js { render }
+      else
+        flash[:alert] = get_errors
+        format.html { render :new }
+        format.js { render }
+      end
     end
   end
 
