@@ -29,14 +29,20 @@
       <%= link_to "Sign Out", sessions_path, method: :delete, class: "navlink" %>
     </div>
     
+    
   <% else %>
-
     <div class="col-md-2">
       <%= link_to "Sign In", new_session_path, class: "navlink" %>
     </div>
+    <!-- SignUp modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Sign Up</button>
 
-    <div class="col-md-2">
-      <%= link_to "Sign Up", new_user_path, class: "navlink" %>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg">
+       <div class="modal-content">
+         <%= render '/users/form' %>
+       </div>
+      </div>
     </div>
 
   <% end %>
@@ -53,14 +59,5 @@
 <% end %> 
 
 
-<!-- SignUp modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Sign Up</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
- <div class="modal-dialog modal-lg">
-   <div class="modal-content">
-     <%= render '/users/form' %>
-   </div>
-  </div>
-</div>
 
