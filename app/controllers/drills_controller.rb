@@ -55,10 +55,10 @@ class DrillsController < ApplicationController
       render :edit
     end
   end
-
+    
   def destroy
     if @drill.destroy
-      redirect_to drill_group_drills_path(@drill_group)
+      redirect_to drill_group_path(@drill_group)
     else
       flash[:alert] = get_errors
       redirect_to [@drill_group, @drill]
