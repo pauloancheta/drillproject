@@ -5,6 +5,7 @@ class DrillsController < ApplicationController
   # Get the desired drill for the show, edit,
   # update, and destroy actions before they execute
   before_action :get_drill, only: [:show, :edit, :update, :destroy]
+  # respond_to :js
 
   def index
     @drills = Drill.order(created_at: :desc)
@@ -19,6 +20,7 @@ class DrillsController < ApplicationController
     @drill.drill_group = @drill_group
     if @drill.save
       redirect_to [@drill_group, @drill]
+      # respond_with()
     else
       flash[:alert] = get_errors
       render :new
