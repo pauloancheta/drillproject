@@ -59,6 +59,9 @@
  background: url("link_images/homesplash.png");
  margin-top: -25px;
 }
+
+// for login in jumbotron
+
 .login div.form-group.email.required.user_email{
   width: 300px;
 }
@@ -90,7 +93,7 @@
   height: 300px;
   margin-left: 60px;
   position: absolute;
-  top: 360px;}
+  top: 390px;}
 
 .logsubmit{
   background-color: #EDEDED;
@@ -107,4 +110,19 @@
 
 form#new_user.simple_form.new_user {
   height: inherit;
+}
+
+
+
+//for all drills drill group box
+
+.drillbox p {
+  margin-left: 15px;
+  max-width: 270px;
+  word-wrap: break-word;
+}
+
+.topspace {
+  height: 20px;
+  width: 100%;
 }
