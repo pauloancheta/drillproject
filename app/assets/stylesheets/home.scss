@@ -42,9 +42,11 @@
 }
 
 .jumbotron {
-  background: url("link_images/homesplash.png");
+  background-image: url("link_images/homesplash2.jpg");
   margin-top: -25px;
   height: 550px;
+  background-repeat: no-repeat;
+  background-position: 0px -120px;
 }
 
 .homesplash {
@@ -56,4 +58,53 @@
  height: 200px;
  background: url("link_images/homesplash.png");
  margin-top: -25px;
+}
+.login div.form-group.email.required.user_email{
+  width: 300px;
+}
+.login .form-group.user_password{
+  width: 300px;
+}
+
+.login .user_email input{
+  background-color: rgba(77, 73, 108, 0.6);
+  color: #EDEDED;
+}
+.login .user_password input{
+  background-color: rgba(77, 73, 108, 0.6);
+  color: #EDEDED;
+}
+
+.login .form-group.user_email label{
+  color: #EDEDED;
+  font-size: 1.1em;
+  }
+
+  .login .form-group.user_password label{
+    color: #EDEDED;
+    font-size: 1.1em;
+  }
+
+.login {
+  width: 300px;
+  height: 300px;
+  margin-left: 60px;
+  position: absolute;
+  top: 360px;}
+
+.logsubmit{
+  background-color: #EDEDED;
+  border: none;
+  width: 80px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.logsubmit:hover{
+  background-color: #4d496c;
+  color: #EDEDED;
+}
+
+form#new_user.simple_form.new_user {
+  height: inherit;
 }
