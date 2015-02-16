@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+ <div class="pagesplash">
+   <div class="large-text white-text text-center">
+       <br>
+        <div id="greeting"><%= current_user.first_name %>!</div>
+   </div>
+   <hr>
+   <div class="medium-text white-text text-center">
+        you're doing alright guy. you're doing alright.
+   </div>
+
+ </div>
+<% end %>

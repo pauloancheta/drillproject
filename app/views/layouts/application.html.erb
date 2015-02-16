@@ -12,12 +12,17 @@
 
 <%= "<div class=\"alert alert-success\">#{flash[:notice]}</div>".html_safe if flash[:notice] %>
 <%= "<div class=\"alert alert-danger\">#{flash[:alert]}</div>".html_safe if flash[:alert] %>
-
+<% if user_signed_in? %>
+  <%= render '/home/user_greeting' %>
+<% end %>
 <% unless user_signed_in? %>
   <%= render '/home/no_user' %>
 <% end %>
 
-<div class="container container-fluid">
+
+  
+
+<div class="container-fluid">
   <%= yield %>
 </div>
 
