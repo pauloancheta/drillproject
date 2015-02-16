@@ -1,10 +1,8 @@
 <div class="navheader">
 
-
   <div class="col-md-2 text-center">
     <%= link_to image_tag("codecore_drill.png", :class => 'navlogo'), root_path %>
   </div>
-
 
   <div class="col-md-2 navbutton text-center">
     <%= link_to "All Drills", all_drills_path, class: "navlink"%>
@@ -13,7 +11,6 @@
   <div class="col-md-2 navbutton text-center">
     <%= link_to "My Drills", my_drills_path, class: "navlink"%>
   </div>
-
 
   <div class="col-md-2 navbutton text-center">
     <%= link_to "About", about_path, class: "navlink" %>
@@ -44,20 +41,12 @@
        </div>
       </div>
     </div>
-
   <% end %>
-  
+
   </div>
-
 </div>
-
-
 
 <%# Added to display admin partial if current_user is admin %>
 <% if user_signed_in? && current_user.is_admin %>
   <%= render 'layouts/admin' %>
 <% end %> 
-
-
-
-
