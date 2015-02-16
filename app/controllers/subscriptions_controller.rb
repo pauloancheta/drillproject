@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
     @subscription = @drill_group.subscriptions.new
     @subscription.user = current_user
     if @subscription.save
-      redirect_to my_drills_path
+      redirect_to all_drills_path
     else
       redirect_to all_drills_path, alert: get_errors
     end
