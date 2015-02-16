@@ -1,0 +1,10 @@
+<% if @drill.errors.any? %>
+	$('#new_drill_solutions_form').html("<%= j render partial: "/drill_groups/new_drill_solutions_form" %>");
+<% else %>
+	$('#drill-group-drills').append("<%= j render partial: '/drill_groups/drill_list_item', locals: {drill: @drill} %>");
+<% end %>
+
+
+
+// need to figure out how to display errors if form is submitted without title or description filled out
+
