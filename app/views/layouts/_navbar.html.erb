@@ -4,21 +4,22 @@
     <%= link_to image_tag("codecore_drill.png", :class => 'navlogo'), root_path %>
   </div>
 
- <div class="col-md-2 navbutton text-center">
-    <%= link_to "All Drills", all_drills_path, class: "navlink"%>
-  </div>
+    
 
   <% if user_signed_in? %>
-  <div class="col-md-2 navbutton text-center">
-    <%= link_to "My Drills", my_drills_path, class: "navlink"%>
-  </div>
+  
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "All Drills", all_drills_path, class: "navlink"%>
+    </div>
 
-<% end %>
-  <div class="col-md-2 navbutton text-center">
-    <%= link_to "About", about_path, class: "navlink" %>
-  </div>
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "My Drills", my_drills_path, class: "navlink"%>
+    </div>
 
-  <% if user_signed_in? %>
+
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "About", about_path, class: "navlink" %>
+    </div>
 
     <div class="col-md-2 navbutton text-center">
       <%= link_to "My Account", user_path(current_user), class: "navlink" %>
@@ -34,7 +35,19 @@
       <%# link_to "Sign In", new_session_path, class: "navlink" %>
     </div> -->
    <!--  SignUp modal -->
-    <button type="button" class="navbutton text-center" data-toggle="modal" data-target=".bs-example-modal-lg">Sign Up</button>
+ 
+  
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "All Drills", all_drills_path, class: "navlink"%>
+    </div>
+
+    <div class="col-md-2 navbutton text-center">
+      <%= link_to "About", about_path, class: "navlink" %>
+    </div>
+
+    <!-- SignUp modal -->
+    <div class="col-md-2 navbutton text-center" data-toggle="modal" data-target=".bs-example-modal-lg">Sign Up</div>
+
 
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
      <div class="modal-dialog modal-lg">
