@@ -8,21 +8,33 @@
   <% end %>
 </div>
 
-<!-- box for adding new drill/solution(s) -->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Add New Drill</h3>
-  </div>
+  <% if current_user.is_admin %>
 
-  <!-- display form to add new drill -->
-<div class="panel-body">
-    <div id="new_drill_form">
-      <%= render partial: "/drill_groups/new_drill_form" %>
-    </div>
+    <!-- box for adding new drill/solution(s) -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add New Drill</h3>
+      </div>
 
-    <!-- display form to add new drill solution -->
-    <div id="new_drill_solutions_form">
-        <%= render partial: "/drill_groups/new_drill_solutions_form" %>
+      <!-- display form to add new drill -->
+      <div class="panel-body">
+        <div id="new_drill_form">
+          <%= render partial: "/drill_groups/new_drill_form" %>
+        </div>
+
+        <!-- display form to add new drill solution -->
+        <div id="drill_solutions">
+          <div id="new_drill_solutions_form">
+            <%#= render partial: "/drill_groups/new_drill_solutions_form" %>
+          </div>
+        </div>
+      </div>
     </div>
+  <% end %>
+<% else %>
+
+  <h3> There are no drills associated with this drill group! </h3>
+  <div id="new_drill_form">
+    <%= render partial: "/drill_groups/new_drill_form" %>
   </div>
-</div> 
+<% end %>

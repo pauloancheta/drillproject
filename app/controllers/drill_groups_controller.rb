@@ -28,7 +28,7 @@ class DrillGroupsController < ApplicationController
     @drills = @drill_group.drills
 
     if @drill_group.drills.length > 0
-      @drill = @drill_group.drills.find(params[:id])
+      @drill = @drill_group.drills
     end
   end
 

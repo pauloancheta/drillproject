@@ -7,9 +7,12 @@
 <div id="user_attempt_form">
   <%= render "/drills/user_attempt_form" %>
 </div>
-<div id="correct_answers">
-  Correct Answers:<br />
-  <% @drill.solutions.each do |solution| %>
-    <%= render partial: "/drills/correct_answers", locals: { solution: solution } %>
-  <% end %>
-</div>
+<% if current_user.is_admin %>
+  <div id="correct_answers">
+    Correct Answers:<br />
+    <% @drill.solutions.each do |solution| %>
+      <%= render partial: "/drills/correct_answers", locals: { solution: solution } %>
+    <% end %>
+  </div>
+
+<% end %>
