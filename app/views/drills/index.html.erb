@@ -1,10 +1,10 @@
 <h1>Drills</h1>
 
 <div class="container">
-  <% @drills.each do |f| %>
-    <p><%= link_to f.title, drill_group_drill_pathx(f.drill_group, f) %><p>
-    <p>Title:<%= f.title %></p>
-    <p>Description:<%= f.description %></p>
+  <% @drills.each do |drill| %>
+    <p><%= link_to drill.title, drill_group_drill_path(drill.drill_group, drill) %><p>
+    <p>Title:<%= drill.title %></p>
+    <p>Description:<%= drill.description %></p>
     <hr>
   <% end %>
 </div>   
