@@ -1,0 +1,11 @@
+<div id="all_drills">
+  <div id="prev_drill_message"></div>
+  <% flag_first = true %>
+  <% @drills.each do |drill| %>
+    <div id="<%= dom_id(drill) %>"<%= " style=\"display: none; \"".html_safe unless flag_first %>>
+      <strong><%= drill.title %></strong>: <%= drill.description %><br />
+      <%= render partial: "/drills/user_attempt_form", locals: { drill_group: @drill_group, drill: drill, scorecard: @scorecard } %>
+    </div>
+    <% flag_first = false %>
+  <% end %>
+</div>

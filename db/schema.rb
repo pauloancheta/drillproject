@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215040230) do
+ActiveRecord::Schema.define(version: 20150216154414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,9 @@ ActiveRecord::Schema.define(version: 20150215040230) do
     t.integer  "correct_drills"
     t.integer  "user_id"
     t.integer  "drill_group_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "last_attempted_drill_id"
   end
 
   add_index "scorecards", ["drill_group_id"], name: "index_scorecards_on_drill_group_id", using: :btree

@@ -41,22 +41,39 @@ class ScorecardsController < ApplicationController
   end
 
   def start_attempt
-
+    @drill_group = DrillGroup.find params[:solution][:drill_group_id]
+    @drills = @drill_group.drills
+    @scorecard = Scorecard.new
+    @scorecard.user = current_user
+    @scorecard.drill_group = @drill_group
+    @scorecard.total_drills = @drills.length
+    if @scorecard.save
+      render :do_drills
+    else
+      flash[:alert] = "Unable to setup drills session; #{get_errors}"
+      redirect_to my_drills_path
+    end
   end
 
   def attempt
     @drill_group = DrillGroup.find params[:solution][:drill_group_id]
     @drill = Drill.find params[:solution][:drill_id]
     @scorecard = Scorecard.find params[:solution][:scorecard_id]
-    flag_correct_solution = false
+    @user_solution = params[:solution][:content]
+    @correct = false
+    @correct_solutions = ""
     @drill.solutions.each do |solution|
-      if solution.exact_match && (solution.content == params[:solution][:content])
-        flag_correct_solution = true
-      elsif (!solution.exact_match) && (Regexp.new solution.content =~ params[:solution][:content])
-        flag_correct_solution = true
+      @correct_solutions += "<strong>"
+      @correct_solutions += solution.exact_match ? "Exact Match" : "Regex"
+      @correct_solutions += ":</strong> #{solution.content}<br />"
+      if solution.exact_match && (solution.content == @user_solution)
+        @correct = true
+      elsif (!solution.exact_match) && (Regexp.new(solution.content) =~ @user_solution)
+        @correct = true
       end
     end
-    if flag_correct_solution
+
+    if @correct
       @scorecard.correct_drills += 1
     end
     respond_to do |format|

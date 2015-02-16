@@ -8,7 +8,7 @@
 %>
 
 Your answer:<br />
-<%= simple_form_for Solution.new, url: attempt_path, method: :patch, class: "form-horizontal" do |f| %>
+<%= simple_form_for Solution.new, url: attempt_path, method: :patch, class: "form-horizontal", remote: true do |f| %>
   <%= f.text_area :content %>
   <%= f.hidden_field :drill_group_id, value: drill_group.id %>
   <%= f.hidden_field :drill_id, value: drill.id %>
