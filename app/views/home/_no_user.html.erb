@@ -18,4 +18,12 @@
     <%= image_tag ("codecore_drill.png") %>
   </div>
 
+  <div class="login">
+    <%= simple_form_for @user = User.new, url: sessions_path do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.submit "Sign In", class: "logsubmit" %>
+    <% end %>
+  </div>
+
 </div>
