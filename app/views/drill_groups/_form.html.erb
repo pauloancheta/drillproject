@@ -1,13 +1,3 @@
-<h1>Drill Group: <%= @drill_group.name %></h1>
-<p><%= @drill_group.description %></p>
-
-<!-- display existing drills in current drill group -->
-<div id="drill-group-drills">
-  <% @drill_group.drills.each do |drill| %>
-    <%= render partial: "/drill_groups/drill_list_item", locals: { drill: drill } %>
-  <% end %>
-</div>
-
 <!-- box for adding new drill/solution(s) -->
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -15,14 +5,16 @@
   </div>
 
   <!-- display form to add new drill -->
-<div class="panel-body">
+  <div class="panel-body">
     <div id="new_drill_form">
       <%= render partial: "/drill_groups/new_drill_form" %>
     </div>
 
     <!-- display form to add new drill solution -->
-    <div id="new_drill_solutions_form">
+    <div id="drill_solutions">
+      <div id="new_drill_solutions_form">
         <%= render partial: "/drill_groups/new_drill_solutions_form" %>
+      </div>
     </div>
   </div>
-</div> 
+</div>
