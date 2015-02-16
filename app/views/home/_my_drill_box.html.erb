@@ -1,11 +1,6 @@
 <%#
   TODO
   USER
-  The Start button should allow the user to attempt all the Drills in the selected Drill Group. It should redirect to the user show drill page.
-%>
-<%#
-  TODO
-  USER
   The Randomize button should allow the user to attempt all the Drills to which they subscribed in random order. It should redirect to the user show drill page.
 %>
 
@@ -28,7 +23,9 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-3">
-      <%= link_to "Start", root_path, class: "btn btn-default" %>
+      <%# drill is the first drill in the drill_group %>
+      <% drill = Drill.where(drill_group_id: drill_group.id).first %>
+      <%= link_to "Start", drill_group_drill_path(drill_group.id, drill), class: "btn btn-default" %>
     </div>
     <div class="col-md-4">
       <%= link_to "Remove from my drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-default", method: :delete %>
