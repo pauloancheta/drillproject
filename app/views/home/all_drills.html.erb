@@ -1,3 +1,17 @@
+<% if user_signed_in? %>
+  <div class="pagesplash">
+    <div class="large-text white-text text-center">
+        <br>
+        Here are all of the drills for today, <%= current_user.first_name %>
+    </div>
+<hr>
+    <div class="medium-text white-text text-center">
+         get at it.
+    </div>
+
+  </div>
+<% end %>
+
 <div id="all_drills_container">
   <% DrillGroup.all.each do |drill_group| %>
     <%= render partial: "/home/all_drills_box", locals: { drill_group: drill_group } %>

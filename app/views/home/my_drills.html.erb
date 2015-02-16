@@ -1,3 +1,17 @@
+<% if user_signed_in? %>
+  <div class="pagesplash">
+    <div class="large-text white-text text-center">
+        <br>
+        This is all of your drills, <%= current_user.first_name %>
+    </div>
+<hr>
+    <div class="medium-text white-text text-center">
+         you're doing alright guy. you're doing alright.
+    </div>
+
+  </div>
+<% end %>
+
 <div id="my_drills_container">
   <% current_user.drill_group_subscriptions.each do |drill_group_subscription| %>
     <%= render partial: "/home/my_drill_box", locals: { drill_group: drill_group_subscription } %>

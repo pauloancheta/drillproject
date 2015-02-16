@@ -2,19 +2,22 @@
   <hr>
 </div>
 
-<div class="col-md-4 text-center large-text">
-  <%= @user.first_name %> 
-  <%= @user.last_name %>
-</div>
+<% if user_signed_in? %>
+  <div class="pagesplash">
+    <div class="large-text white-text text-center">
+        <br>
+        <%= @user.first_name %> <%= @user.last_name %>
+    </div>
+<hr>
+    <div class="medium-text white-text text-center">
+        <%= @user.email %>
+    </div>
 
-<div class="col-md-4 text-center medium-text">
-  <%= @user.email %>
-</div>
+  </div>
+<% end %>
 
-
- 
-
-
+<% if user_signed_in? %>
 <% if current_user.is_admin %>
   "You are an admin"
+  <% end %>
   <% end %>
