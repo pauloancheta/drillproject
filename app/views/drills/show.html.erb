@@ -4,6 +4,7 @@
 <div id="drill_prompt">
   <%= render "/drills/drill_prompt" %>
 </div>
+
 <div id="user_attempt_form">
   <%= render "/drills/user_attempt_form" %>
 </div>
@@ -14,4 +15,5 @@
       <%= render partial: "/drills/correct_answers", locals: { solution: solution } %>
     <% end %>
   </div>
+
 <% end %>

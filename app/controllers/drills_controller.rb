@@ -18,13 +18,26 @@ class DrillsController < ApplicationController
   def create
     @drill = Drill.new drill_params
     @drill.drill_group = @drill_group
-    if @drill.save
-      redirect_to [@drill_group, @drill]
-      # respond_with()
-    else
-      flash[:alert] = get_errors
-      render :new
+
+    respond_to do |format|
+      if @drill.save
+        format.html {redirect_to [@drill_group, @drill]}
+        format.js {render}
+      else
+        format.html {flash[:alert] = get_errors}
+        #render :new
+        format.js {render}
+      end
+# =======
+#     if @drill.save
+#       redirect_to [@drill_group, @drill]
+#       # respond_with()
+#     else
+#       flash[:alert] = get_errors
+#       render :new
+# >>>>>>> upstream/master
     end
+    
   end
 
   def show
@@ -42,10 +55,10 @@ class DrillsController < ApplicationController
       render :edit
     end
   end
-
+    
   def destroy
     if @drill.destroy
-      redirect_to drill_group_drills_path(@drill_group)
+      redirect_to drill_group_path(@drill_group)
     else
       flash[:alert] = get_errors
       redirect_to [@drill_group, @drill]
