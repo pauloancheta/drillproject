@@ -25,7 +25,9 @@
   <% end %>
 <% else %>
   <h3> There are no drills associated with this drill group! </h3>
-  <div id="new_drill_form">
-    <%= render partial: "/drill_groups/new_drill_form" %>
-  </div>
+  <% if current_user.is_admin %>
+    <div id="new_drill_form">
+      <%= render partial: "/drill_groups/new_drill_form" %>
+    </div>
+  <% end %>
 <% end %>
