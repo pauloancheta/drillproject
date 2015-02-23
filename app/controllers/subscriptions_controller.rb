@@ -4,10 +4,14 @@ class SubscriptionsController < ApplicationController
     @drill_group = DrillGroup.find params[:drill_group_id]
     @subscription = @drill_group.subscriptions.new
     @subscription.user = current_user
-    if @subscription.save
-      redirect_to all_drills_path
-    else
-      redirect_to all_drills_path, alert: get_errors
+    respond_to do |format|
+      if @subscription.save
+        format.html { redirect_to all_drills_path }
+        format.js { render }
+      else
+        format.html { redirect_to all_drills_path, alert: get_errors }
+        format.js { render }
+      end
     end
   end
 

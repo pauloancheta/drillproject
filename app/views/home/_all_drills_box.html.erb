@@ -7,9 +7,9 @@
     <div class="row">
       <div class="col-md-12" style="text-align: center">
         <% if Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).empty? %>
-          <%= link_to "Add to My Drills", drill_group_subscriptions_path(drill_group), class: "btn btn-default", method: :post %>
+          <%= link_to "Add to My Drills", drill_group_subscriptions_path(drill_group), class: "btn btn-default addDrill", method: :post, remote: true %>
         <% else %>
-          <%= link_to "Remove from My Drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-danger", method: :delete %>
+          <%= link_to "Remove from My Drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-danger removeDrill", method: :delete, remote: true %>
         <% end %>
       </div>
     </div>
