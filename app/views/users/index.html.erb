@@ -1,16 +1,15 @@
 <% if user_signed_in? %>
 	<h1>All Users</h1>
   <% @users.each do |u| %>
-    <% if u != current_user%>
+    <% if u != current_user %>
       <div class="well">
-      <h2><%=  u.email %></h2>
+      <h2><%= u.email %></h2>
       <p> <%= u.full_name %> </p>
-      <%= link_to "Destroy user", user_path(u), method: :delete, style: "color: red" %>
+      <%= link_to "Delete User", user_path(u), method: :delete, class: "btn btn-danger" %>
       <% if u.is_admin? %>
-        <%= button_to "Undo Admin", toggle_path(u.id), method: :patch, class: "btn btn-warning" %>
+        <%= link_to "Undo Admin", toggle_path(u.id), method: :patch, class: "btn btn-info" %>
       <% else %>
-        <%= button_to "Make Admin", toggle_path(u.id), method: :patch, class: "btn btn-warning" %>
-  
+        <%= link_to "Make Admin", toggle_path(u.id), method: :patch, class: "btn btn-warning" %>
       <% end %>
       </div>
     <% end %>
@@ -19,7 +18,6 @@
 <% elsif user_signed_in? %>
 
   <h1> Sorry, you must be an admin user to access this page </h1> 
-
 
 <% end %>
 
