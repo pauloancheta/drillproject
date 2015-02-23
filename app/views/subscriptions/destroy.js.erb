@@ -1,0 +1,7 @@
+$('#flash_messages').html('');
+<% if @subscription.errors.any? %>
+  <%= "<div class=\"alert alert-success\">#{flash[:notice]}</div>".html_safe if flash[:notice] %>
+  <%= "<div class=\"alert alert-danger\">#{flash[:alert]}</div>".html_safe if flash[:alert] %>
+<% else %>
+  $('#<%= dom_id(@drill_group) %>').hide();
+<% end %>

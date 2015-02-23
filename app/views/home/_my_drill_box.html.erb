@@ -29,7 +29,7 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      <%= link_to "Remove from my drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-default", method: :delete %>
+      <%= link_to "Remove from my drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-default", method: :delete, remote: true %>
     </div>
     <div class="col-md-1"></div>
   </div>
