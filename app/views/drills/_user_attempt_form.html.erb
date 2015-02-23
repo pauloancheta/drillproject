@@ -9,9 +9,9 @@
 
 Your answer:<br />
 <%= simple_form_for Solution.new, url: attempt_path, method: :patch, class: "form-horizontal", remote: true do |f| %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, class: "form-control" %>
   <%= f.hidden_field :drill_group_id, value: drill_group.id %>
   <%= f.hidden_field :drill_id, value: drill.id %>
   <%= f.hidden_field :scorecard_id, value: scorecard.id %>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-default" %>
 <% end %>
