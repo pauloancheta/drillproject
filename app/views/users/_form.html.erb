@@ -1,9 +1,9 @@
 <%= simple_form_for @user, class: "form-horizontal" do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
+  <%= f.input :email, required: true %>
+  <%= f.input :password, required: true %>
+  <%= f.input :password_confirmation, required: true %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 

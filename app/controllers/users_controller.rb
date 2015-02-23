@@ -23,13 +23,13 @@ class UsersController < ApplicationController
   def edit
   end
 
-   def update
-      if @user.update(user_params)
-        redirect_to users_path, notice: "Updated user!"  
-      else   
-        flash[:alert] = "Sorry, your user update request failed"
-        render :index    
-      end
+  def update
+    if @user.update(user_params)
+      redirect_to edit_user_path(@user), notice: "Updated user!"  
+    else   
+      flash[:alert] = "Sorry, your user update request failed"
+      render :edit   
+    end
   end
 
   def show
