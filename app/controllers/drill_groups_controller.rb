@@ -7,6 +7,10 @@ class DrillGroupsController < ApplicationController
 
   def new
     @drill_group = DrillGroup.new
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
 
