@@ -12,7 +12,11 @@ class DrillsController < ApplicationController
   end
 
   def new
-    @drill = Drill.new
+    @drill_group = DrillGroup.find params[:drill_group_id]
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
   def create
