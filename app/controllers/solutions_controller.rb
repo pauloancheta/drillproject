@@ -5,9 +5,12 @@ class SolutionsController < ApplicationController
   before_action :find_drill, only: [ :new, :create, :edit, :destroy ]
 
   def new
+    @drill_group = @drill.drill_group
     @solution = Solution.new
-
-    render :new
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
   def create

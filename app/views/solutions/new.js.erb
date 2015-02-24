@@ -1,0 +1,8 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+<%# Change the title of the panel, and replace the Drill creation form with a plaintext version of the newly created Drill %>
+$('#new_drill_form').html('<strong><%= @drill.title %>:</strong> <%= @drill.description %>');
+$('#viewModal .panel-title').text('Add a Solution(s) to \"<%= @drill.title %>\"');
+<%# Show the create associated Solution form %>
+$('#new_drill_solutions_form').html('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill } %>');
