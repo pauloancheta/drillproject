@@ -49,6 +49,10 @@ class DrillGroupsController < ApplicationController
 
   def edit
     @drill_group = DrillGroup.find(params[:id])
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
 
