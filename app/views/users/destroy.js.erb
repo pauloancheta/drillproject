@@ -1,13 +1,7 @@
-$('#flash_message').html('');
+$('#flash-messages').html('');
 
-<%# Display the flash messages if any %>
-<% if flash[:notice] %>
-  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
-<% end %>
-<% if flash[:alert] %>
-  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
-<% end %>
-
-<% unless @user.errors.any? %>
+<% if @user.errors.any? %>
+  $('#flash-messages').append('<div class="alert alert-danger"><%= @user.errors.full_messages.join('; ') %></div>');
+<% else %>
   $('#<%= dom_id(@user) %>').remove();
 <% end %>
