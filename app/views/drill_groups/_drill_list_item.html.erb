@@ -5,7 +5,7 @@
   <div class="row">
     <% if current_user.is_admin %>
         <%= link_to "Create Answers", new_drill_solution_path(drill), remote: true, class: "btn btn-default" %>
-        <%= link_to "Edit", edit_drill_group_drill_path(@drill_group, drill), class: "btn btn-default" %>
+        <%= link_to "Edit", edit_drill_group_drill_path(@drill_group, drill), remote: true, class: "btn btn-default" %>
         <%= link_to "Delete", drill_group_drill_path(@drill_group, drill), method: :delete, class: "btn btn-danger" %>
     <% end %>
   </div>

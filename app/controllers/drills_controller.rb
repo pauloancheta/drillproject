@@ -39,6 +39,10 @@ class DrillsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
   def update
