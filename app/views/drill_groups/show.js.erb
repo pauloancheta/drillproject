@@ -8,4 +8,6 @@ $('#drill-group-drills').html('');
   $('#drill-group-drills').append('<%= j render partial: "/drill_groups/drill_list_item", locals: { drill: drill } %>');
 <% end %>
 $('#new_drill_form').html('<%= j render partial: "/drill_groups/new_drill_form" %>');
+$('#new_drill_solutions_form').html('');
+$('#drill_solutions').html('');
 $('#viewModal').modal('show');
