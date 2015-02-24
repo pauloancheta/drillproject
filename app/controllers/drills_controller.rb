@@ -61,11 +61,17 @@ class DrillsController < ApplicationController
   end
     
   def destroy
-    if @drill.destroy
-      redirect_to drill_group_path(@drill_group)
-    else
-      flash[:alert] = get_errors
-      redirect_to [@drill_group, @drill]
+    respond_to do |format|
+      if @drill.destroy
+        format.html { redirect_to drill_group_path(@drill_group) }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          redirect_to [@drill_group, @drill]
+        }
+        format.js { render }
+      end
     end
   end
 

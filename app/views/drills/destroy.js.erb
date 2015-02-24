@@ -1,0 +1,8 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+<% if @drill.errors.any? %>
+  $('#viewModal .flash-messages').append('<div class="alert alert-danger"><%= @drill.errors.full_messages.join('; ') %></div>');
+<% else %>
+  $('#<%= dom_id(@drill) %>').remove();
+<% end %>
