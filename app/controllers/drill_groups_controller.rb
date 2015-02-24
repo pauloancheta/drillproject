@@ -58,11 +58,17 @@ class DrillGroupsController < ApplicationController
 
   def update
     @drill_group = DrillGroup.find(params[:id])
-    if @drill_group.update drill_group_params
-      redirect_to @drill_group, notice: "Drill Group Updated!"
-    else
-      flash[:alert] = get_errors
-      render :edit
+    respond_to do |format|
+      if @drill_group.update drill_group_params
+        format.html { redirect_to @drill_group, notice: "Drill Group Updated!" }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          render :edit
+        }
+        format.js { render }
+      end
     end
   end
 
