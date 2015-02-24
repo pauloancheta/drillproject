@@ -36,8 +36,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-      if current_user.is_admin? &&  @user.destroy
-        redirect_to users_path, notice: "User deleted" 
+      if current_user.is_admin? && @user.destroy
+        respond_to do |format|
+          format.html { redirect_to users_path, notice: "User deleted" }
+          format.js { render }
+        end 
       else
         flash[:alert] = "Sorry, your user delete request failed"
         render :index         
