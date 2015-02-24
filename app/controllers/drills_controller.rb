@@ -46,11 +46,17 @@ class DrillsController < ApplicationController
   end
 
   def update
-    if @drill.update drill_params
-      redirect_to [@drill_group, @drill]
-    else
-      flash[:alert] = get_errors
-      render :edit
+    respond_to do |format|
+      if @drill.update drill_params
+        format.html { redirect_to [@drill_group, @drill] }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          render :edit
+        }
+        format.js { render }
+      end
     end
   end
     
