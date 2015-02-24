@@ -17,12 +17,17 @@ class DrillGroupsController < ApplicationController
   def create
     @drill_group = DrillGroup.new drill_group_params
     @drill_group.user_id = current_user.id
-
-    if @drill_group.save
-      redirect_to drill_groups_path, notice: "Drill Group Created!"
-    else
-      flash[:alert] = get_errors
-      render :new
+    respond_to do |format|
+      if @drill_group.save
+        format.html { redirect_to drill_groups_path, notice: "Drill Group Created!" }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          render :new
+        }
+        format.js { render }
+      end
     end
   end
 
