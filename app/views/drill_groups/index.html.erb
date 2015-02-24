@@ -20,3 +20,38 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="viewModalLabel"></h4>
+        <p id="viewModalDescription"></p>
+      </div>
+      <div class="flash-messages">
+      </div>
+      <div class="modal-body">
+        <!-- display existing drills in current drill group -->
+        <div id="drill-group-drills">
+        </div>
+        <!-- box for adding new drill/solution(s) -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Add New Drill</h3>
+          </div>
+          <!-- display form to add new drill -->
+          <div class="panel-body">
+            <div id="new_drill_form">
+            </div>
+            <!-- display form to add new drill solution -->
+            <div id="drill_solutions">
+              <div id="new_drill_solutions_form">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

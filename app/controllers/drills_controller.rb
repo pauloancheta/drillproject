@@ -22,20 +22,14 @@ class DrillsController < ApplicationController
     respond_to do |format|
       if @drill.save
         format.html {redirect_to [@drill_group, @drill]}
-        format.js {render}
+        format.js { render }
       else
-        flash[:alert] = get_errors
-        format.html { render :new }
-        format.js {render}
+        format.html { 
+          flash[:alert] = get_errors
+          render :new
+        }
+        format.js { render }
       end
-# =======
-#     if @drill.save
-#       redirect_to [@drill_group, @drill]
-#       # respond_with()
-#     else
-#       flash[:alert] = get_errors
-#       render :new
-# >>>>>>> upstream/master
     end
     
   end

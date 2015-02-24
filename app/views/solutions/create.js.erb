@@ -1,14 +1,9 @@
-$('#flash_message').html('');
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
 
-<%# Display the flash messages if any %>
-<% if flash[:notice] %>
-  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
-<% end %>
-<% if flash[:alert] %>
-  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
-<% end %>
-
-<% unless @solution.errors.any? %>
+<% if @solution.errors.any? %>
+  $('#viewModal .flash-messages').append('<div class="alert alert-danger"><%= @solution.errors.full_messages.join('; ') %></div>');
+<% else %>
   <%# Show the create associated Solution form %>
   $('#new_drill_solutions_form').html('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill } %>');
   <%# Show the newly created Solution in the list below the form %>

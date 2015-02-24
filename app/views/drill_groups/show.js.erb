@@ -1,0 +1,11 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+$('#viewModalLabel').html('<%= @drill_group.name %>');
+$('#viewModalDescription').html('<%= @drill_group.description %>');
+$('#drill-group-drills').html('');
+<% @drill_group.drills.each do |drill| %>
+  $('#drill-group-drills').append('<%= j render partial: "/drill_groups/drill_list_item", locals: { drill: drill } %>');
+<% end %>
+$('#new_drill_form').html('<%= j render partial: "/drill_groups/new_drill_form" %>');
+$('#viewModal').modal('show');

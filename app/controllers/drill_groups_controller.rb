@@ -39,6 +39,11 @@ class DrillGroupsController < ApplicationController
     if @drill_group.drills.length > 0
       @drill = @drill_group.drills
     end
+
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
 

@@ -18,8 +18,10 @@ class SolutionsController < ApplicationController
         format.html { redirect_to [@drill.drill_group, @drill], notice: "Solution successfully created!" } #add this once the drill model exists
         format.js { render }
       else
-        flash[:alert] = get_errors
-        format.html { render :new }
+        format.html { 
+          flash[:alert] = get_errors
+          render :new
+        }
         format.js { render }
       end
     end

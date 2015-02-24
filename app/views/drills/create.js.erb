@@ -1,19 +1,14 @@
-$('#flash_message').html('');
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
 
-<%# Display the flash messages if any %>
-<% if flash[:notice] %>
-  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
-<% end %>
-<% if flash[:alert] %>
-  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
-<% end %>
-
-<% unless @drill.errors.any? %>
+<% if @drill.errors.any? %>
+  $('#viewModal .flash-messages').append('<div class="alert alert-danger"><%= @drill.errors.full_messages.join('; ') %></div>');
+<% else %>
   <%# Append the created Drill to the list of Drills %>
 	$('#drill-group-drills').append("<%= j render partial: '/drill_groups/drill_list_item', locals: {drill: @drill} %>");
   <%# Change the title of the panel, and replace the Drill creation form with a plaintext version of the newly created Drill %>
   $('#new_drill_form').html('<strong><%= @drill.title %>:</strong> <%= @drill.description %>');
-  $('.panel-title').text('Add a Solution(s) to this Drill');
+  $('#viewModal .panel-title').text('Add a Solution(s) to this Drill');
   <%# Show the create associated Solution form %>
   $('#new_drill_solutions_form').append('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill } %>');
 <% end %>
