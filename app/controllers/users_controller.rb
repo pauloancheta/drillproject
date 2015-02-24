@@ -51,7 +51,10 @@ class UsersController < ApplicationController
       @user.is_admin = true
     end
     @user.save
-    redirect_to users_path
+    respond_to do |format|
+      format.html { redirect_to users_path }
+      format.js { render }
+    end
   end
 
   private
