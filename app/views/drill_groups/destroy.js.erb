@@ -1,0 +1,13 @@
+$('#flash_message').html('');
+
+<%# Display the flash messages if any %>
+<% if flash[:notice] %>
+  $('#flash_message').append('<div class="alert alert-success"><%= flash[:notice] %></div>');
+<% end %>
+<% if flash[:alert] %>
+  $('#flash_message').append('<div class="alert alert-danger"><%= flash[:alert] %></div>');
+<% end %>
+
+<% unless @drill_group.errors.any? %>
+  $('#<%= dom_id @drill_group %>').remove();
+<% end %>
