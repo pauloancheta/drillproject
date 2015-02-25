@@ -1,7 +1,7 @@
 
 <div id="<%= dom_id(drill_group) %>" style="display: inline-block; width: 300px; border: 1px solid black; margin-top: 10px; margin-right: 12px; min-height: 200px; float: left; ">
   <div class="drillbox">
-    <h3 style="text-align: center; "><%= link_to drill_group.name, drill_group_path(drill_group) %></h3>
+    <h3 style="text-align: center; "><%= drill_group.name %></h3>
     <p><%= drill_group.description %></p>
     <p>Level: <%= Level.find(drill_group.level).title %></p>
     <div class="row">
