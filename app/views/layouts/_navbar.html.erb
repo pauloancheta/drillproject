@@ -52,9 +52,13 @@
 
 
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-     <div class="modal-dialog modal-lg">
-       <div class="modal-content">
-         <%= render '/users/form' %>
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="flash-messages">
+          </div>
+          <div class="user-form">
+            <%= render partial: '/users/form', locals: { user: @user } %>
+          </div>
        </div>
       </div>
     </div>

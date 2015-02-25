@@ -1,0 +1,8 @@
+$('#flash-messages').html('');
+$('.bs-example-modal-lg .flash-messages').html('');
+
+<% if @user.errors.any? %>
+  $('.bs-example-modal-lg .flash-messages').append('<div class="alert alert-danger"><%= @user.errors.full_messages.join('; ') %></div>');
+<% end %>
+
+$('.bs-example-modal-lg .user-form').html('<%= j render partial: "/users/form", locals: { user: @user } %>');
