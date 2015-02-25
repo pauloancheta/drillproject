@@ -41,11 +41,17 @@ class SolutionsController < ApplicationController
   end
 
   def update
-    if @solution.update solution_params
-      redirect_to [@drill.drill_group, @drill], notice: "Question updated successfully!" #add once drill model exists
-    else
-      flash[:alert] = get_errors
-      render :edit
+    respond_to do |format|
+      if @solution.update solution_params
+        format.html { redirect_to [@drill.drill_group, @drill], notice: "Question updated successfully!" }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          render :edit
+        }
+        format.js { render }
+      end
     end
   end
 
