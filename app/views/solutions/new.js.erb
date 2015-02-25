@@ -5,7 +5,7 @@ $('#viewModal .flash-messages').html('');
 $('#new_drill_form').html('<strong><%= @drill.title %>:</strong> <%= @drill.description %>');
 $('#viewModal .panel-title').text('Add a Solution(s) to \"<%= @drill.title %>\"');
 <%# Show the create associated Solution form %>
-$('#new_drill_solutions_form').html('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill } %>');
+$('#new_drill_solutions_form').html('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill, solution: Solution.new } %>');
 <%# List the existing solutions %>
 $('#drill_solutions').html('');
 <% @drill.solutions.each do |solution| %>

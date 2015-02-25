@@ -1,0 +1,5 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+$('#viewModal .panel-title').text('Edit Solutions for \"<%= @drill.title %>\"');
+$('#new_drill_solutions_form').html('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill, solution: @solution } %>');

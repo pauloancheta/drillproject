@@ -32,6 +32,12 @@ class SolutionsController < ApplicationController
   end
 
   def edit
+    @drill = Drill.find params[:drill_id]
+    @solution = Solution.find params[:id]
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
   def update
