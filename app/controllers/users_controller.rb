@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_admin, only: [:index, :destroy, :toggle]
-  before_action :authenticate_user, only: [:edit, :update]
+  before_action :authenticate_admin!, only: [:index, :destroy, :toggle]
+  before_action :authenticate_user!, only: [:edit, :update]
   before_action :user_id, only: [:edit, :show, :update, :destroy, :toggle]
 
   def new

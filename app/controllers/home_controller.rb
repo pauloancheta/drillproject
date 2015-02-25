@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   end
 
   def about
+    @user = User.new
   end
 
   def my_drills
