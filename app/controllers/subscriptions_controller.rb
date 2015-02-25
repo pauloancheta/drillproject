@@ -1,5 +1,7 @@
 class SubscriptionsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @drill_group = DrillGroup.find params[:drill_group_id]
     @subscription = @drill_group.subscriptions.new

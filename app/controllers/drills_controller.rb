@@ -1,15 +1,12 @@
 class DrillsController < ApplicationController
 
+  before_action :authenticate_admin!
   before_action :get_drill_group
 
   # Get the desired drill for the show, edit,
   # update, and destroy actions before they execute
   before_action :get_drill, only: [:show, :edit, :update, :destroy]
   # respond_to :js
-
-  def index
-    @drills = Drill.order(created_at: :desc)
-  end
 
   def new
     @drill_group = DrillGroup.find params[:drill_group_id]
@@ -36,10 +33,6 @@ class DrillsController < ApplicationController
       end
     end
     
-  end
-
-  def show
-    @solutions = @drill.solutions
   end
 
   def edit

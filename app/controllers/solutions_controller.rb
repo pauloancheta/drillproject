@@ -1,4 +1,5 @@
 class SolutionsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :get_drill
   before_action :find_solution,
                   only: [ :edit, :update, :destroy]

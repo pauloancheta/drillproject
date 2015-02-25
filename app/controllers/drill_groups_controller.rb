@@ -1,5 +1,7 @@
 class DrillGroupsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def index
     @drill_groups = DrillGroup.order(name: :asc)
   end
@@ -11,7 +13,6 @@ class DrillGroupsController < ApplicationController
       format.js { render }
     end
   end
-
 
   def create
     @drill_group = DrillGroup.new drill_group_params
@@ -30,7 +31,6 @@ class DrillGroupsController < ApplicationController
     end
   end
 
-
   def show
     @drill_group = DrillGroup.find(params[:id])
     @drills = @drill_group.drills
@@ -45,7 +45,6 @@ class DrillGroupsController < ApplicationController
     end
   end
 
-
   def edit
     @drill_group = DrillGroup.find(params[:id])
     respond_to do |format|
@@ -53,7 +52,6 @@ class DrillGroupsController < ApplicationController
       format.js { render }
     end
   end
-
 
   def update
     @drill_group = DrillGroup.find(params[:id])
@@ -71,7 +69,6 @@ class DrillGroupsController < ApplicationController
     end
   end
 
-
   def destroy
     @drill_group = DrillGroup.find(params[:id])
     respond_to do |format|
@@ -85,8 +82,6 @@ class DrillGroupsController < ApplicationController
     end
   end
 
-
-
   private
 
   def drill_group_params
@@ -97,6 +92,5 @@ class DrillGroupsController < ApplicationController
     @drill.errors.full_messages.join('; ')
   
   end
-
 
 end

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate_admin, only: [:index, :destroy, :toggle]
+  before_action :authenticate_user, only: [:edit, :update]
   before_action :user_id, only: [:edit, :show, :update, :destroy, :toggle]
+
   def new
     @user = User.new
   end
@@ -30,9 +34,6 @@ class UsersController < ApplicationController
       flash[:alert] = "Sorry, your user update request failed"
       render :edit   
     end
-  end
-
-  def show
   end
 
   def destroy
