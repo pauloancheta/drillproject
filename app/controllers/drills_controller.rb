@@ -1,5 +1,6 @@
 class DrillsController < ApplicationController
 
+  before_action :authenticate_admin!
   before_action :get_drill_group
 
   # Get the desired drill for the show, edit,
@@ -7,12 +8,12 @@ class DrillsController < ApplicationController
   before_action :get_drill, only: [:show, :edit, :update, :destroy]
   # respond_to :js
 
-  def index
-    @drills = Drill.order(created_at: :desc)
-  end
-
   def new
-    @drill = Drill.new
+    @drill_group = DrillGroup.find params[:drill_group_id]
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
   def create
@@ -22,46 +23,52 @@ class DrillsController < ApplicationController
     respond_to do |format|
       if @drill.save
         format.html {redirect_to [@drill_group, @drill]}
-        format.js {render}
+        format.js { render }
       else
-        flash[:alert] = get_errors
-        format.html { render :new }
-        format.js {render}
+        format.html { 
+          flash[:alert] = get_errors
+          render :new
+        }
+        format.js { render }
       end
-# =======
-#     if @drill.save
-#       redirect_to [@drill_group, @drill]
-#       # respond_with()
-#     else
-#       flash[:alert] = get_errors
-#       render :new
-# >>>>>>> upstream/master
     end
     
   end
 
-  def show
-    @solutions = @drill.solutions
-  end
-
   def edit
+    respond_to do |format|
+      format.html { render }
+      format.js { render }
+    end
   end
 
   def update
-    if @drill.update drill_params
-      redirect_to [@drill_group, @drill]
-    else
-      flash[:alert] = get_errors
-      render :edit
+    respond_to do |format|
+      if @drill.update drill_params
+        format.html { redirect_to [@drill_group, @drill] }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          render :edit
+        }
+        format.js { render }
+      end
     end
   end
     
   def destroy
-    if @drill.destroy
-      redirect_to drill_group_path(@drill_group)
-    else
-      flash[:alert] = get_errors
-      redirect_to [@drill_group, @drill]
+    respond_to do |format|
+      if @drill.destroy
+        format.html { redirect_to drill_group_path(@drill_group) }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          redirect_to [@drill_group, @drill]
+        }
+        format.js { render }
+      end
     end
   end
 

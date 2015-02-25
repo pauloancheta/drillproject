@@ -7,25 +7,22 @@ Rails.application.routes.draw do
   get "/all_drills" => "home#all_drills"
   post "/start_attempt" => "scorecards#start_attempt"
   patch "/attempt" => "scorecards#attempt"
-  # TODO: Relationships to be added later
 
-  resources :users 
+  resources :users, except: [:show]
   resources :drill_groups 
 
-  resources :tags
-  resources :levels
+  resources :tags, only: [:show]
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
   
   resources :drills, only: [] do
-    resources :solutions, only: [ :new, :create, :edit, :update, :destroy ]
+    resources :solutions, except: [:index, :show]
   end
   resources :drill_groups, only: [] do
-    resources :drills
-    resources :subscriptions
-    resources :scorecards
+    resources :drills, except: [:index, :show]
+    resources :subscriptions, only: [:create, :destroy]
     resources :tags, only: [] do
       resources :tagifications, only: [:create, :destroy]
     end

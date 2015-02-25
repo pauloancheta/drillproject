@@ -1,0 +1,15 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+$('#viewModalLabel').html('<%= @drill_group.name %>');
+$('#viewModalDescription').html('<%= @drill_group.description %>');
+$('.btn-new-drill').replaceWith('<%= link_to "New Drill", new_drill_group_drill_path(@drill_group), remote: true, class: "btn btn-default btn-new-drill" %>');
+  $('#viewModal .panel-title').text('Create a New Drill');
+$('#drill-group-drills').html('');
+<% @drill_group.drills.each do |drill| %>
+  $('#drill-group-drills').append('<%= j render partial: "/drill_groups/drill_list_item", locals: { drill: drill } %>');
+<% end %>
+$('#new_drill_form').html('<%= j render partial: "/drill_groups/new_drill_form", locals: { drill: Drill.new } %>');
+$('#new_drill_solutions_form').html('');
+$('#drill_solutions').html('');
+$('#viewModal').modal('show');

@@ -1,0 +1,7 @@
+$('#flash-messages').html('');
+
+<% if @subscription.errors.any? %>
+  $('#flash-messages').append('<div class="alert alert-danger"><%= @subscription.errors.full_messages.join('; ') %></div>');
+<% else %>
+  $('#<%= dom_id(@drill_group) %> .addDrill').replaceWith('<%= link_to "Remove from My Drills", drill_group_subscription_path(@drill_group, Subscription.where(drill_group_id: @drill_group.id).where(user_id: current_user.id).take), class: "btn btn-danger removeDrill", method: :delete, remote: true %>');
+<% end %>

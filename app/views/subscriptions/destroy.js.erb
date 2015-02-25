@@ -1,0 +1,11 @@
+$('#flash-messages').html('');
+
+<% if @subscription.errors.any? %>
+  $('#newModal .flash-messages').append('<div class="alert alert-danger"><%= @subscription.errors.full_messages.join('; ') %></div>');
+<% else %>
+  <% if params['my_drills'] == "true" %>
+    $('#<%= dom_id(@drill_group) %>').hide();
+  <% else %>
+    $('#<%= dom_id(@drill_group) %> .removeDrill').replaceWith('<%= link_to "Add to My Drills", drill_group_subscriptions_path(@drill_group), class: "btn btn-default addDrill", method: :post, remote: true %>');
+  <% end %>
+<% end %>

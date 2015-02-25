@@ -8,12 +8,12 @@
 </head>
 <body>
 
-<%= render '/layouts/navbar' %>
-
-<div id="flash_messages">
+<div id="flash-messages">
   <%= "<div class=\"alert alert-success\">#{flash[:notice]}</div>".html_safe if flash[:notice] %>
   <%= "<div class=\"alert alert-danger\">#{flash[:alert]}</div>".html_safe if flash[:alert] %>
 </div>
+
+<%= render '/layouts/navbar' %>
 
 <% if user_signed_in? %>
   <%= render '/home/user_greeting' %>
@@ -22,14 +22,9 @@
   <%= render '/home/no_user' %>
 <% end %>
 
-
-  
-
 <div class="container-fluid">
   <%= yield %>
 </div>
-
-
 
 </body>
 </html>

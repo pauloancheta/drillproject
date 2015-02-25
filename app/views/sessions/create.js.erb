@@ -1,0 +1,8 @@
+$('#flash-messages').html('');
+
+<% if @user %>
+  $('#flash-messages').append('<div class="alert alert-danger">Your e-mail and password do not match.</div>');
+  $('#login-form').html('<%= j render partial: "/home/login_form", locals: { user: @user } %>');
+<% else %>
+  $('#flash-messages').append('<div class="alert alert-danger">Unable to find that e-mail address.</div>');
+<% end %>

@@ -1,0 +1,4 @@
+$('#viewModal .panel-title').html('Add New Drill');
+$('#new_drill_form').html('<%= j render partial: "/drill_groups/new_drill_form", locals: { drill: Drill.new } %>');
+$('#new_drill_solutions_form').html('');
+$('#drill_solutions').html('');

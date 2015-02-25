@@ -1,0 +1,6 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+$('#viewModal .panel-title').text('Add a Solution(s) to \"<%= @drill.title %>\"');
+$('#<%= dom_id(@solution) %>').replaceWith('<%= j render partial: "/solutions/solution", locals: { solution: @solution } %>');
+$('#new_drill_solutions_form').html('<%= j render partial: "/drill_groups/new_drill_solutions_form", locals: { drill: @drill, solution: Solution.new } %>');

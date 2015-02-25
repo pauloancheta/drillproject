@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216154414) do
+ActiveRecord::Schema.define(version: 20150224022737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,11 @@ ActiveRecord::Schema.define(version: 20150216154414) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "drill_group_id"
+    t.integer  "user_id"
   end
 
   add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
+  add_index "drills", ["user_id"], name: "index_drills_on_user_id", using: :btree
 
   create_table "levels", force: :cascade do |t|
     t.string   "title"
@@ -59,15 +61,15 @@ ActiveRecord::Schema.define(version: 20150216154414) do
 
   create_table "solutions", force: :cascade do |t|
     t.integer  "drill_id"
-    t.integer  "admin_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.text     "content"
     t.boolean  "exact_match", default: true
+    t.integer  "user_id"
   end
 
-  add_index "solutions", ["admin_id"], name: "index_solutions_on_admin_id", using: :btree
   add_index "solutions", ["drill_id"], name: "index_solutions_on_drill_id", using: :btree
+  add_index "solutions", ["user_id"], name: "index_solutions_on_user_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "drill_group_id"
@@ -108,9 +110,11 @@ ActiveRecord::Schema.define(version: 20150216154414) do
   add_foreign_key "drill_groups", "levels"
   add_foreign_key "drill_groups", "users"
   add_foreign_key "drills", "drill_groups"
+  add_foreign_key "drills", "users"
   add_foreign_key "scorecards", "drill_groups"
   add_foreign_key "scorecards", "users"
   add_foreign_key "solutions", "drills"
+  add_foreign_key "solutions", "users"
   add_foreign_key "subscriptions", "drill_groups"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "tagifications", "drill_groups"

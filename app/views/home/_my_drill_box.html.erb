@@ -5,7 +5,7 @@
 %>
 
 <div id="<%= dom_id(drill_group) %>" style="display: inline-block; width: 300px; border: 1px solid black; ">
-  <h3 style="text-align: center; "><%= link_to drill_group.name, drill_group_path(drill_group) %></h3>
+  <h3 style="text-align: center; "><%= drill_group.name %></h3>
   <div class="row">
     <div class="col-md-12">
       <% taken_count = current_user.scorecards.where(drill_group_id: drill_group.id).count %>
@@ -29,7 +29,7 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      <%= link_to "Remove from my drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-default", method: :delete %>
+      <%= link_to "Remove from my drills", "#{drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take)}?my_drills=true", class: "btn btn-default", method: :delete, remote: true %>
     </div>
     <div class="col-md-1"></div>
   </div>

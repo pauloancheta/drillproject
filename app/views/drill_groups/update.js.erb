@@ -1,0 +1,9 @@
+$('#flash-messages').html('');
+$('#newModal .flash-messages').html('');
+
+<% if @drill_group.errors.any? %>
+  $('#newModal .flash-messages').append('<div class="alert alert-danger"><%= @drill_group.errors.full_messages.join('; ') %></div>');
+<% else %>
+  $('#newModal').modal('hide');
+  $('#<%= dom_id(@drill_group) %>').replaceWith('<%= j render partial: "/drill_groups/admin_drill_group_block", locals: { drill_group: @drill_group } %>');
+<% end %>

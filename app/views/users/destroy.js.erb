@@ -1,0 +1,7 @@
+$('#flash-messages').html('');
+
+<% if @user.errors.any? %>
+  $('#flash-messages').append('<div class="alert alert-danger"><%= @user.errors.full_messages.join('; ') %></div>');
+<% else %>
+  $('#<%= dom_id(@user) %>').remove();
+<% end %>

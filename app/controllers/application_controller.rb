@@ -9,10 +9,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin!
+    unless admin_signed_in?
+      redirect_to root_path
+    end
+  end
+
   def user_signed_in?
     session[:user_id].present?
   end
   helper_method :user_signed_in?
+
+  def admin_signed_in?
+    user_signed_in? && current_user.is_admin
+  end
+  helper_method :admin_signed_in?
 
   def current_user
     @current_user ||= User.find session[:user_id] if user_signed_in?

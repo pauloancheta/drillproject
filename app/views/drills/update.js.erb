@@ -1,0 +1,12 @@
+$('#flash-messages').html('');
+$('#viewModal .flash-messages').html('');
+
+<% if @drill.errors.any? %>
+  $('#viewModal .flash-messages').append('<div class="alert alert-danger"><%= @drill.errors.full_messages.join('; ') %></div>');
+<% else %>
+  $('#<%= dom_id(@drill) %>').replaceWith('<%= j render partial: "/drill_groups/drill_list_item", locals: { drill: @drill } %>');
+  $('#viewModal .panel-title').html('Successfully Updated "<%= @drill.title %>"');
+  $('#new_drill_form').html('Drill updated!');
+  $('#new_drill_solutions_form').html('');
+  $('#drill_solutions').html('');
+<% end %>

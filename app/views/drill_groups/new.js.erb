@@ -1,0 +1,5 @@
+$('#flash-messages').html('');
+$('#newModal .flash-messages').html('');
+$('#newModalLabel').html('Create a New Drill Group');
+$('#newModal .modal-body').html('<%= j render partial: '/drill_groups/drill_group', locals: { drill_group: DrillGroup.new } %>');
+$('#newModal').modal('show');

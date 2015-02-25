@@ -1,14 +1,12 @@
-<a href="<%= drill_group_drill_path( drill.drill_group_id , drill.id ) %> " >
-  <div class="row" style="border: 1px solid blue; margin-bottom: 10px; ">
-    <div class="col-md-8">
-      <strong><%= drill.title %>:</strong> <%= drill.description %>
-    </div>
-    <div class="col-md-4">
-      <% if current_user.is_admin %>
-        <%= link_to "Create Answers", new_drill_solution_path(drill), class: "btn btn-default" %>
-        <%= link_to "Edit", edit_drill_group_drill_path(@drill_group, drill), class: "btn btn-default" %>
-        <%= link_to "Delete", drill_group_drill_path(@drill_group, drill), method: :delete, class: "btn btn-danger" %>
-      <% end %>
-    </div>
+<div class="well" style="margin-bottom: 10px; " id="<%= dom_id(drill) %>">
+  <div class="row">
+    <strong><%= drill.title %>:</strong> <%= drill.description %>
   </div>
-</a>
+  <div class="row">
+    <% if current_user.is_admin %>
+        <%= link_to "Create Answers", new_drill_solution_path(drill), remote: true, class: "btn btn-default" %>
+        <%= link_to "Edit", edit_drill_group_drill_path(@drill_group, drill), remote: true, class: "btn btn-default" %>
+        <%= link_to "Delete", drill_group_drill_path(@drill_group, drill), method: :delete, remote: true, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>

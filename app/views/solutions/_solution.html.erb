@@ -1,3 +1,6 @@
-<strong>Solution:</strong> (<%= solution.exact_match ? "Exact Match" : "Regex" %>)<br />
-<%= solution.content %>
-<hr />
+<div class="well" id="<%= dom_id(solution) %>">
+  <strong>Solution:</strong> (<%= solution.exact_match ? "Exact Match" : "Regex" %>)<br />
+  <%= solution.content %>
+  <%= link_to "Edit", edit_drill_solution_path(solution.drill, solution), remote: true, class: "btn btn-default" %>
+  <%= link_to "Delete", drill_solution_path(solution.drill, solution), method: :delete, remote: true, class: "btn btn-danger" %>
+</div>

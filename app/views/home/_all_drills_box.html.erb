@@ -1,15 +1,15 @@
 
 <div id="<%= dom_id(drill_group) %>" style="display: inline-block; width: 300px; border: 1px solid black; margin-top: 10px; margin-right: 12px; min-height: 200px; float: left; ">
   <div class="drillbox">
-    <h3 style="text-align: center; "><%= link_to drill_group.name, drill_group_path(drill_group) %></h3>
+    <h3 style="text-align: center; "><%= drill_group.name %></h3>
     <p><%= drill_group.description %></p>
     <p>Level: <%= Level.find(drill_group.level).title %></p>
     <div class="row">
       <div class="col-md-12" style="text-align: center">
         <% if Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).empty? %>
-          <%= link_to "Add to My Drills", drill_group_subscriptions_path(drill_group), class: "btn btn-default", method: :post %>
+          <%= link_to "Add to My Drills", drill_group_subscriptions_path(drill_group), class: "btn btn-default addDrill", method: :post, remote: true %>
         <% else %>
-          <%= link_to "Remove from My Drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-danger", method: :delete %>
+          <%= link_to "Remove from My Drills", drill_group_subscription_path(drill_group, Subscription.where(drill_group_id: drill_group.id).where(user_id: current_user.id).take), class: "btn btn-danger removeDrill", method: :delete, remote: true %>
         <% end %>
       </div>
     </div>

@@ -1,5 +1,7 @@
 class TagificationsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def create
     @tagification = Tagification.new
     @tagification.tag = params[:tag_id]

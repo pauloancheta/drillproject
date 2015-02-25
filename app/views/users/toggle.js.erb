@@ -1,0 +1,6 @@
+$('#flash_messages').html('');
+<% if @user.is_admin %>
+  $('#<%= dom_id(@user) %> .addAdmin').replaceWith('<%= link_to "Undo Admin", toggle_path(@user), method: :patch, remote: true, class: "btn btn-info removeAdmin" %>');
+<% else %>
+  $('#<%= dom_id(@user) %> .removeAdmin').replaceWith('<%= link_to "Make Admin", toggle_path(@user), method: :patch, remote: true, class: "btn btn-warning addAdmin" %>');
+<% end %>

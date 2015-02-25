@@ -1,8 +1,0 @@
-<%= @user.first_name %> <br>
-<%= @user.last_name %> <br>
-<%= @user.email %> <br>
-<% if current_user.is_admin %>
-  "You are an admin"
-  <% end %>
-
-<%= link_to "EDIT USER", edit_user_path(@user) %>
