@@ -1,0 +1,19 @@
+<div id="all_drills">
+  <div id="prev_drill_message"></div>
+  <% flag_first = true %>
+  <% @output.each do |ar| %>
+    <% drill = ar[1] %>
+    <% scorecard = ar[0] %>
+    <% drill_group = drill.drill_group %>
+    <div id="<%= dom_id(drill) %>"<%= " style=\"display: none; \"".html_safe unless flag_first %>>
+      <strong><%= drill.title %></strong>:<br />
+      <%= drill.description %><br />
+      <%= render partial: "/drills/user_attempt_form", locals: { drill_group: drill_group, drill: drill, scorecard: scorecard } %>
+    </div>
+    <% flag_first = false %>
+  <% end %>
+  <div id="return_to_my_drills" style="display: none; ">
+    You have now completed these drills!<br /><br />
+    <%= link_to "Return to My Drills", my_drills_path, class: "btn btn-default" %>
+  </div>
+</div>

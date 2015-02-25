@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/all_drills" => "home#all_drills"
   post "/start_attempt" => "scorecards#start_attempt"
   patch "/attempt" => "scorecards#attempt"
+  post "/randomize" => "scorecards#randomize"
 
   resources :users, except: [:show]
   resources :drill_groups 
