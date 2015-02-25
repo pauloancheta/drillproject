@@ -16,12 +16,9 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new solution_params
     @solution.drill = @drill
+    @solution.save
     respond_to do |format|
-      if @solution.save
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
@@ -34,22 +31,16 @@ class SolutionsController < ApplicationController
   end
 
   def update
+    @solution.update solution_params
     respond_to do |format|
-      if @solution.update solution_params
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
   def destroy
+    @solution.destroy
     respond_to do |format|
-      if @solution.destroy
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

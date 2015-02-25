@@ -18,13 +18,9 @@ class DrillsController < ApplicationController
   def create
     @drill = Drill.new drill_params
     @drill.drill_group = @drill_group
-
+    @drill.save
     respond_to do |format|
-      if @drill.save
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
     
   end
@@ -36,22 +32,16 @@ class DrillsController < ApplicationController
   end
 
   def update
+    @drill.update drill_params
     respond_to do |format|
-      if @drill.update drill_params
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
     
   def destroy
+    @drill.destroy
     respond_to do |format|
-      if @drill.destroy
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

@@ -6,24 +6,18 @@ class SubscriptionsController < ApplicationController
     @drill_group = DrillGroup.find params[:drill_group_id]
     @subscription = @drill_group.subscriptions.new
     @subscription.user = current_user
+    @subscription.save
     respond_to do |format|
-      if @subscription.save
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
   def destroy
     @drill_group = DrillGroup.find params[:drill_group_id]
     @subscription = @drill_group.subscriptions.find params[:id]
+    @subscription.destroy
     respond_to do |format|
-      if @subscription.destroy
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

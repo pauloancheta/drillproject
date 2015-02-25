@@ -31,12 +31,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update user_params
     respond_to do |format|
-      if @user.update(user_params)
-        format.js { render }
-      else   
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

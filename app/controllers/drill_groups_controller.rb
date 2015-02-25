@@ -16,12 +16,9 @@ class DrillGroupsController < ApplicationController
   def create
     @drill_group = DrillGroup.new drill_group_params
     @drill_group.user_id = current_user.id
+    @drill_group.save
     respond_to do |format|
-      if @drill_group.save
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
@@ -47,23 +44,17 @@ class DrillGroupsController < ApplicationController
 
   def update
     @drill_group = DrillGroup.find(params[:id])
+    @drill_group.update drill_group_params
     respond_to do |format|
-      if @drill_group.update drill_group_params
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
   def destroy
     @drill_group = DrillGroup.find(params[:id])
+    @drill_group.destroy
     respond_to do |format|
-      if @drill_group.destroy
-        format.js { render } 
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

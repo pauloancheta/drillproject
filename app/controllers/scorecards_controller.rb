@@ -60,12 +60,9 @@ class ScorecardsController < ApplicationController
     if @correct
       @scorecard.correct_drills += 1
     end
+    @scorecard.save
     respond_to do |format|
-      if @scorecard.save
-        format.js { render }
-      else
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
