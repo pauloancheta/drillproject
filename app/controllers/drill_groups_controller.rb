@@ -4,7 +4,6 @@ class DrillGroupsController < ApplicationController
     @drill_groups = DrillGroup.order(name: :asc)
   end
 
-
   def new
     @drill_group = DrillGroup.new
     respond_to do |format|
