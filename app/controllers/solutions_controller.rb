@@ -56,11 +56,17 @@ class SolutionsController < ApplicationController
   end
 
   def destroy
-    if @solution.destroy
-      redirect_to [@drill.drill_group, @drill], notice: "Drill solution deleted successfully!"
-    else
-      flash[:alert] = get_errors
-      redirect_to @solution.drill
+    respond_to do |format|
+      if @solution.destroy
+        format.html { redirect_to [@drill.drill_group, @drill], notice: "Drill solution deleted successfully!" }
+        format.js { render }
+      else
+        format.html {
+          flash[:alert] = get_errors
+          redirect_to @solution.drill
+        }
+        format.js { render }
+      end
     end
   end
 
