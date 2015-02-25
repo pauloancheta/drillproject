@@ -8,10 +8,8 @@ class SubscriptionsController < ApplicationController
     @subscription.user = current_user
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to all_drills_path }
         format.js { render }
       else
-        format.html { redirect_to all_drills_path, alert: get_errors }
         format.js { render }
       end
     end
@@ -22,10 +20,8 @@ class SubscriptionsController < ApplicationController
     @subscription = @drill_group.subscriptions.find params[:id]
     respond_to do |format|
       if @subscription.destroy
-        format.html { redirect_to my_drills_path }
         format.js { render }
       else
-        format.html { redirect_to my_drills_path, alert: get_errors }
         format.js { render }
       end
     end

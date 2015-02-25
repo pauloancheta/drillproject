@@ -9,7 +9,6 @@ class DrillGroupsController < ApplicationController
   def new
     @drill_group = DrillGroup.new
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
@@ -19,13 +18,8 @@ class DrillGroupsController < ApplicationController
     @drill_group.user_id = current_user.id
     respond_to do |format|
       if @drill_group.save
-        format.html { redirect_to drill_groups_path, notice: "Drill Group Created!" }
         format.js { render }
       else
-        format.html {
-          flash[:alert] = get_errors
-          render :new
-        }
         format.js { render }
       end
     end
@@ -40,7 +34,6 @@ class DrillGroupsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
@@ -48,7 +41,6 @@ class DrillGroupsController < ApplicationController
   def edit
     @drill_group = DrillGroup.find(params[:id])
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
@@ -57,13 +49,8 @@ class DrillGroupsController < ApplicationController
     @drill_group = DrillGroup.find(params[:id])
     respond_to do |format|
       if @drill_group.update drill_group_params
-        format.html { redirect_to @drill_group, notice: "Drill Group Updated!" }
         format.js { render }
       else
-        format.html {
-          flash[:alert] = get_errors
-          render :edit
-        }
         format.js { render }
       end
     end
@@ -73,10 +60,8 @@ class DrillGroupsController < ApplicationController
     @drill_group = DrillGroup.find(params[:id])
     respond_to do |format|
       if @drill_group.destroy
-        format.html { redirect_to drill_groups_path }
         format.js { render } 
       else
-        format.html { redirect_to @drill_group, alert: get_errors }
         format.js { render }
       end
     end

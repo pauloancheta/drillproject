@@ -64,7 +64,6 @@ class ScorecardsController < ApplicationController
       if @scorecard.save
         format.js { render }
       else
-        flash[:alert] = get_errors
         format.js { render }
       end
     end

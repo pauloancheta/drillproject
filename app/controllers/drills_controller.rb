@@ -11,7 +11,6 @@ class DrillsController < ApplicationController
   def new
     @drill_group = DrillGroup.find params[:drill_group_id]
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
@@ -22,13 +21,8 @@ class DrillsController < ApplicationController
 
     respond_to do |format|
       if @drill.save
-        format.html {redirect_to [@drill_group, @drill]}
         format.js { render }
       else
-        format.html { 
-          flash[:alert] = get_errors
-          render :new
-        }
         format.js { render }
       end
     end
@@ -37,7 +31,6 @@ class DrillsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
@@ -45,13 +38,8 @@ class DrillsController < ApplicationController
   def update
     respond_to do |format|
       if @drill.update drill_params
-        format.html { redirect_to [@drill_group, @drill] }
         format.js { render }
       else
-        format.html {
-          flash[:alert] = get_errors
-          render :edit
-        }
         format.js { render }
       end
     end
@@ -60,13 +48,8 @@ class DrillsController < ApplicationController
   def destroy
     respond_to do |format|
       if @drill.destroy
-        format.html { redirect_to drill_group_path(@drill_group) }
         format.js { render }
       else
-        format.html {
-          flash[:alert] = get_errors
-          redirect_to [@drill_group, @drill]
-        }
         format.js { render }
       end
     end
