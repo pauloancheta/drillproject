@@ -1,4 +1,5 @@
 <h2> Edit user </h2>
 
-<%= render '/users/form'  %>
-
+<div id="edit-profile-form">
+  <%= render partial: '/users/form', locals: { user: @user }  %>
+</div>

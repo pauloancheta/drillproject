@@ -13,13 +13,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to root_path, notice: "Account Created!" }
         format.js { render js: "window.location = '/'" }
       else
-        format.html {
-          flash[:alert] = "Account not created"
-          render :new
-        }
         format.js {
           render
         }
@@ -36,18 +31,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to edit_user_path(@user), notice: "Updated user!"  
-    else   
-      flash[:alert] = "Sorry, your user update request failed"
-      render :edit   
+    @user.update user_params
+    respond_to do |format|
+      format.js { render }
     end
   end
 
   def destroy
       if current_user.is_admin? && @user.destroy
         respond_to do |format|
-          format.html { redirect_to users_path, notice: "User deleted" }
           format.js { render }
         end 
       else
@@ -64,7 +56,6 @@ class UsersController < ApplicationController
     end
     @user.save
     respond_to do |format|
-      format.html { redirect_to users_path }
       format.js { render }
     end
   end

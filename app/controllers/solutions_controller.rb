@@ -9,7 +9,6 @@ class SolutionsController < ApplicationController
     @drill_group = @drill.drill_group
     @solution = Solution.new
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
@@ -17,17 +16,9 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new solution_params
     @solution.drill = @drill
+    @solution.save
     respond_to do |format|
-      if @solution.save
-        format.html { redirect_to [@drill.drill_group, @drill], notice: "Solution successfully created!" } #add this once the drill model exists
-        format.js { render }
-      else
-        format.html { 
-          flash[:alert] = get_errors
-          render :new
-        }
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
@@ -35,38 +26,21 @@ class SolutionsController < ApplicationController
     @drill = Drill.find params[:drill_id]
     @solution = Solution.find params[:id]
     respond_to do |format|
-      format.html { render }
       format.js { render }
     end
   end
 
   def update
+    @solution.update solution_params
     respond_to do |format|
-      if @solution.update solution_params
-        format.html { redirect_to [@drill.drill_group, @drill], notice: "Question updated successfully!" }
-        format.js { render }
-      else
-        format.html {
-          flash[:alert] = get_errors
-          render :edit
-        }
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 
   def destroy
+    @solution.destroy
     respond_to do |format|
-      if @solution.destroy
-        format.html { redirect_to [@drill.drill_group, @drill], notice: "Drill solution deleted successfully!" }
-        format.js { render }
-      else
-        format.html {
-          flash[:alert] = get_errors
-          redirect_to @solution.drill
-        }
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

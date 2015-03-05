@@ -6,5 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-levels = Level.create([{ title: "Beginner "}, {title: "Intermediate"},{title: "Advanced"}])
-tags = Tag.create([{title: "Ruby"}, {title: "Javascript"}, {title: "HTML/CSS"}])
+User.create(email: 'admin@example.com', password: 'password123', is_admin: true)
+Level.create([{ title: "Beginner "}, {title: "Intermediate"},{title: "Advanced"}])
+Tag.create([{title: "Ruby"}, {title: "Javascript"}, {title: "HTML/CSS"}])

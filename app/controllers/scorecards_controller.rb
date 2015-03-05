@@ -2,6 +2,30 @@ class ScorecardsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def randomize
+    @output = []
+    current_user.drill_group_subscriptions.each do |drill_group|
+      if drill_group.drills.length > 0
+        scorecard = Scorecard.new
+        scorecard.user = current_user
+        scorecard.drill_group = drill_group
+        scorecard.total_drills = drill_group.drills.length
+        unless scorecard.save
+          (flash[:alert] ||= "") << "Error in creating scorecard(s); #{get_errors}"
+        end
+        drill_group.drills.each do |drill|
+          @output << [scorecard, drill]
+        end
+      end
+    end
+    @output.shuffle!
+    if flash[:alert]
+      redirect_to my_drills_path
+    else
+      render :randomize_drills
+    end
+  end
+
   def start_attempt
     @drill_group = DrillGroup.find params[:solution][:drill_group_id]
     @drills = @drill_group.drills
@@ -36,13 +60,9 @@ class ScorecardsController < ApplicationController
     if @correct
       @scorecard.correct_drills += 1
     end
+    @scorecard.save
     respond_to do |format|
-      if @scorecard.save
-        format.js { render }
-      else
-        flash[:alert] = get_errors
-        format.js { render }
-      end
+      format.js { render }
     end
   end
 

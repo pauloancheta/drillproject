@@ -1,0 +1,8 @@
+$('#flash-messages').html('');
+
+<% if @user.errors.any? %>
+  $('#flash-messages').append('<div class="alert alert-danger"><%= @user.errors.full_messages.join('; ') %></div>');
+<% else %>
+  $('#flash-messages').append('<div class="alert alert-success">Profile saved!</div>');
+  $('#edit-profile-form').html('<%= j render partial: '/users/form', locals: { user: @user }  %>');
+<% end %>
